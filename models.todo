@@ -1,0 +1,25 @@
+☐ User
+ email
+ password
+ username
+
+☐ Project
+name
+goal
+user_id
+description
+img
+end_date
+min_pledge
+website
+
+☐ Tier
+project_id
+max_amount
+reward_text
+
+☐ Transaction
+ user_id
+ project_id
+ dollar_amount
+ tier_id
