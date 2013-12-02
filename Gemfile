@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
@@ -32,6 +34,16 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development do
+	gem "pry", "~> 0.9.12.4"
+	gem 'binding_of_caller'
+	gem 'better_errors'
+end
+
+group :production do
+	gem 'rails_12factor'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
@@ -43,3 +55,5 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem "sorcery", "~> 0.8.4"
