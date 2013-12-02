@@ -41,6 +41,10 @@ group :development do
 	gem 'better_errors'
 end
 
+group :development, :test do
+	gem 'rspec-rails'
+end
+
 group :production do
 	gem 'rails_12factor'
 end
