@@ -1,11 +1,18 @@
 CrowdFunder::Application.routes.draw do
   
-  root :to => 'users#index'
-  resources :sessions, only: [:new, :create, :delete]
-  resources :users
+  root :to => 'projects#index'
 
+  resources :sessions, only: [:create]
   get 'login' => 'sessions#new', :as => :login
   post 'logout' => 'sessions#destroy', :as => :logout
+  
+  resources :users, except: [:index]
+  resources :projects do
+    resources :tiers, except: [:index, :show]
+    resources :transactions
+  end
+
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
