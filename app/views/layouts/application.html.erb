@@ -1,16 +1,24 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>CrowdFunder</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+  
 
 <nav id="authentication">
-	<% if current_user %>
+  <% if current_user %>
     <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
     <%= link_to "Logout", :logout, method: :post %>
   <% else %>
@@ -27,7 +35,10 @@
   
   <main>
     <%= yield %>
-  </main>
 
+    <%= yield %>
+  </main>
+  
+    <%= javascript_include_tag "application" %>
   </body>
 </html>
