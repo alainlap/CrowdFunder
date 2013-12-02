@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Crowdfunder" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -34,7 +34,12 @@
         
         <!-- Logout Button -->
         <li class="has-form">
-          <%= link_to "Logout", :logout, method: :post, class: "button" %>
+          <div class="large-6 small-1 columns">
+            <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+          </div>
+          <div class="large-5 small-5 columns">
+            <%= link_to "Logout", :logout, method: :post, class: "button" %>
+          </div>
         </li>
 
       <% else %>
@@ -42,14 +47,15 @@
         <!-- Login Form -->
           <li class="has-form">
             <div class="row collapse">
+              <%= form_tag (sessions_path), method: :post do %>
               <div class="large-5 small-5 columns">
-                <%= text_field_tag :username, nil, placeholder: "Username", id: "username-login" %>
+                <%= text_field_tag :username, nil, placeholder: "Username" %>
               </div>
               <div class="large-5 small-5 columns">
-                <%= password_field_tag :password, nil, placeholder: "Password", id: "password-login"%>
+                <%= password_field_tag :password, nil, placeholder: "Password" %>
               </div>
               <div class="large-2 small-2 columns">
-                <a href="<%= sessions_path %>" class="button expand" id="submit-login">Login</a>
+                <%= submit_tag "Login", class: "button expand", id: "submit-login" %>
               </div>
             </div>
           </li>
@@ -60,7 +66,7 @@
           <li class="has-form">
             <%= link_to "Register", new_user_path, class: "alert button" %>
           </li>
-      
+          <% end %>
     </ul>
 
     <!-- Left Nav Section -->
@@ -68,19 +74,6 @@
       <li><a href="#">Left Nav Button</a></li>
     </ul>
   </section>
-</nav>
-
-
-
-
-<nav id="authentication">
-  <% if current_user %>
-    <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-    <%= link_to "Logout", :logout, method: :post %>
-  <% else %>
-    <%= link_to "Register", new_user_path %> |
-    
-  <% end %>
 </nav>
 
 

@@ -7,10 +7,7 @@ class SessionsController < ApplicationController
 
   def create
     if @user = login(params[:username], params[:password])
-      respond_to do |format|
-        format.html { redirect_to projects_path, notice: 'Login successful' }
-        format.json { redirect_to projects_path, notice: 'Login successful' }
-      end
+      redirect_to projects_path, notice: 'Login successful'
     else
       flash.now[:alert] = "Login failed"
       redirect_to projects_path, notice: 'Login failed'
