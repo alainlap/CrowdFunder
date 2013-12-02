@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 3 }
   validates :password, confirmation: true
   validates :password_confirmation, presence: true
-  validates :email, uniqueness: true
+  validates :email, :username, uniqueness: true
 
   has_many :created_projects, class_name: "Project"
   has_many :transactions
