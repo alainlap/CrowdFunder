@@ -15,7 +15,7 @@ website
 
 ☐ Tier
 project_id
-max_amount
+threshold
 reward_text
 
 ☐ Transaction
