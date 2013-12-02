@@ -7,15 +7,18 @@ class SessionsController < ApplicationController
 
   def create
     if @user = login(params[:username], params[:password])
-      redirect_back_or_to(:users, notice: 'Login successful')
+      respond_to do |format|
+        format.html { redirect_to projects_path, notice: 'Login successful' }
+        format.json { redirect_to projects_path, notice: 'Login successful' }
+      end
     else
       flash.now[:alert] = "Login failed"
-      render action: "new"
+      redirect_to projects_path, notice: 'Login failed'
     end
   end
 
   def destroy
     logout
-    redirect_to(:users, notice: 'Logged out!')
+    redirect_to projects_path, notice: 'Logged out!'
   end
 end
