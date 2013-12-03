@@ -11,23 +11,66 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
+
+
+  <div class="row">
+    <div class="small-8">
+      <div class="row">
+        <div class="small-3 columns">
+          <%= f.label :username, for: "right-label", class: "right inline" %>
+        </div>
+        <div class="small-9 columns">
+          <%= f.text_field :username, id: "right-label", placeholder: "" %>
+
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+  <div class="row">
+    <div class="small-8">
+      <div class="row">
+        <div class="small-3 columns">
+          <%= f.label :email, for: "right-label", class: "right inline" %>
+        </div>
+        <div class="small-9 columns">
+          <%= f.text_field :email, id: "right-label", placeholder: "" %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
+  <div class="row">
+    <div class="small-8">
+      <div class="row">
+        <div class="small-3 columns">
+          <%= f.label :password, for: "right-label", class: "right inline" %>
+        </div>
+        <div class="small-9 columns">
+          <%= f.password_field :password, id: "right-label", placeholder: "" %>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <div class="row">
+    <div class="small-8">
+      <div class="row">
+        <div class="small-3 columns">
+          <%= f.label "Confirm Password", for: "right-label", class: "right inline" %>
+        </div>
+        <div class="small-9 columns">
+          <%= f.password_field :password_confirmation, id: "right-label", placeholder: "" %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="row">
+    <div class="small-8">
+      <div class="row">
+        <div class="small-9 small-offset-3 columns">
+          <%= f.submit "Register", class: "button tiny" %>
+          <%= link_to 'Cancel', root_path, class: "alert button tiny" %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>

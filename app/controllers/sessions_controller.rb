@@ -7,10 +7,10 @@ class SessionsController < ApplicationController
 
   def create
     if @user = login(params[:username], params[:password])
-      redirect_to projects_path, notice: 'Login successful'
+      redirect_to projects_path, :flash => { :success => "Login successful!" }
     else
       flash.now[:alert] = "Login failed"
-      redirect_to projects_path, notice: 'Login failed'
+      redirect_to projects_path, :flash => { :warning => "Login failed!" }
     end
   end
 

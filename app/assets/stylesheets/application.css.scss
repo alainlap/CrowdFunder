@@ -13,8 +13,10 @@
  *= require_tree .
  */
 
-
-.inline-form {
-	display: inline-block;
-	width: 100%;
+nav {
+	form {
+		.columns {
+			padding: 0;
+		}
+	}
 }
