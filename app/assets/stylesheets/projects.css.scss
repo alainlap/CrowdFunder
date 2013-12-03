@@ -1,3 +1,71 @@
-// Place all the styles related to the Projects controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+h1 {
+  padding-left: 30px; }
+
+.columns {
+  padding-bottom: 15px;
+}
+
+.inline {
+  display: inline-block; }
+
+.center {
+  text-align: center; }
+
+.headerimg {
+  width: 400px;
+  height: 250px;
+  background-size: cover;
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 15px; }
+
+.goals {
+  display: inline-block;
+  float: left;
+  height: 250px; }
+
+.progress {
+  width: 250px; }
+
+.progress100 {
+  color: #f0720c; }
+
+.contbutton {
+  width: 100%;
+  margin-top: 35px; }
+
+.starimg {
+  display: inline;
+  width: 20px;
+  height: 20px;
+  margin-bottom: 7px; }
+
+.leftcol {
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: #f0eee1;
+  margin-right: -30px; }
+
+.leftcoltop {
+  min-height: 280px; }
+
+.goals {
+  padding-left: 15px; }
+
+.tiercard {
+  padding: 10px;
+  background-color: #c7e1f0;
+  margin-bottom: 15px;
+  list-style-type: none; }
+
+.tiernumber {
+  font-size: 20px;
+  color: #2a27f0;
+  display: inline-block; }
+
+.tiertext {
+  line-height: 1em; }
+
+
+
+
