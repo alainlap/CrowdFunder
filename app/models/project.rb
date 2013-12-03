@@ -15,4 +15,8 @@ class Project < ActiveRecord::Base
   def percentage_raised
     sum_raised / self.goal
   end
+
+  def number_of_backers
+    self.transactions.size
+  end
 end

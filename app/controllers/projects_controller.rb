@@ -19,16 +19,12 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    if current_user
-      @creator = current_user
-      @project = @creator.created_projects.build(project_params) #sets creator_id properly
-      if @project.save
-        redirect_to projects_path
-      else
-        render "new"
-      end
-    else
+    @creator = current_user
+    @project = @creator.created_projects.build(project_params) #sets creator_id properly
+    if @project.save
       redirect_to projects_path
+    else
+      render "new"
     end
   end
 
