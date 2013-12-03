@@ -1,15 +1,94 @@
-<p id="notice"><%= notice %></p>
+<h1>My profile</h1>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited your changes from being saved:</h2>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-  
-  
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<div class="row">
+	<%= form_for(@user) do |f| %>
+
+	<fieldset>
+		<legend>Basic info | <a href="#" class="activate-form">Edit</a></legend>
+		<div class="small-4 columns" id="#avatar">
+			<%= image_tag @user.avatar.url(:medium) %>
+		</div>
+
+		<div class="small-8 columns">				
+				<%= f.label :first_name %>
+				<%= f.text_field :first_name %>
+
+				<%= f.label :last_name %>
+				<%= f.text_field :last_name %>
+
+				<%= f.label :email %>
+				<%= f.text_field :email %>
+
+				<ul class="right"><%= f.submit "Update", class: "button tiny" %></ul>
+
+			</fieldset>
+		<% end %>
+	</div>
+
+	
+</div>
+
+<div class="row">
+
+	<div class="small-6 columns">
+		<%= form_for(@user) do |f| %>
+			<fieldset>
+				<legend>Login info | <a href="#" class="activate-form">Edit</a></legend>
+					<%= f.label :username %>
+					<%= f.text_field :username %>
+
+					<%= f.label :password %>
+					<%= f.password_field :password %>
+
+					<%= f.label :password_confirmation %>
+					<%= f.password_field :password_confirmation %>
+
+					<ul class="right"><%= f.submit "Update", class: "button tiny" %></ul>
+
+			</fieldset>
+			<% end %>
+	</div>
+
+	<div class="small-6 columns">
+		<%= form_for(@user) do |f| %>
+			<fieldset>
+				<legend>Address | <a href="#" class="activate-form">Edit</a></legend>
+
+				<%= f.label :street_address %>
+				<%= f.text_field :street_address %>
+
+				<%= f.label :city %>
+				<%= f.text_field :city %>
+
+				<%= f.label :province %>
+				<%= f.text_field :province %>
+
+				<%= f.label :postal_code %>
+				<%= f.text_field :postal_code %>
+
+				<%= f.label :phone_number %>
+				<%= f.text_field :phone_number %>
+
+				<ul class="right"><%= f.submit "Update", class: "button tiny" %></ul>
+
+			</fieldset>
+		<% end %>
+	</div>
+
+</div>
+
+
+
+

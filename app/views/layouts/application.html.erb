@@ -8,8 +8,8 @@
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
-    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -41,7 +41,7 @@
 
             <!-- Edit Profile -->
             <ul class="left">
-              <li><%= link_to "My Profile", edit_user_path(current_user.id) %></li>
+              <li><%= link_to "My Profile", user_path(current_user.id) %></li>
             </ul>
 
             <!-- Logout Button -->
