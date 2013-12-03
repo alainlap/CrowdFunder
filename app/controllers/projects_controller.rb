@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
 
   def create
     @creator = current_user
-    @project = @creator.projects.build(project_params) #sets creator_id properly??
+    @project = @creator.created_projects.build(project_params) #sets creator_id properly
     if @project.save
       redirect_to projects_path
     else
