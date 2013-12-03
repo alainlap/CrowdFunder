@@ -12,7 +12,7 @@ User.create(
 
 Project.create(name: "Amazing Project Title",
           goal: 3400,
-          user_id: 1,
+          creator_id: 1,
           description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.",
           img: "http://images.nationalgeographic.com/wpf/media-live/photos/000/252/cache/autumn-landscape-colorful-leaves_25289_990x742.jpg",
           end_date: Date.new(2014,01,01),
