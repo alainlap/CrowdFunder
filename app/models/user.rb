@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
   validates :email, :username, uniqueness: true
 
-  has_many :created_projects, class_name: "Project"
+  has_many :created_projects, class_name: "Project", foreign_key: 'creator_id'
   has_many :transactions
   has_many :sponsored_projects, through: :transactions, class_name: "Project", source: :project
   
