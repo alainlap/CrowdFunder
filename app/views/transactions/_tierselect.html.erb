@@ -1,0 +1,6 @@
+<% @transaction.qualified_tiers(@project, @amount).each do |tier| %>
+<div class="tier_return">
+  <span class="tier_return_threshold"><%= tier.threshold %></span>
+  <span class="tier_return_remaining"><%= tier %>
+</div>
+<% end %>

@@ -17,4 +17,19 @@
 
 $(function(){ $(document).foundation(); });
 
+$(document).ready(function() {
+
+  $('.dollar_amount').keyup(function(){
+    var amount = $('.dollar_amount').val();
+    var project = window.location.pathname.replace('/projects/', "");
+    $.ajax({
+      url: "/updatetiers",
+      dataType: "script",
+      data: {amount: amount,
+            project: project},
+      success: ""
+    });
+  });
+
+});
 
