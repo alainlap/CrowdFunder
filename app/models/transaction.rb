@@ -6,7 +6,7 @@ class Transaction < ActiveRecord::Base
   def qualified_tiers(amount)
     qualified = []
     self.project.tiers.each do |tier|
-      qualified << tier if amount >= tier.threshold
+      qualified << tier if amount >= tier.threshold && tier.qty_remaining > 0
     end
     qualified 
   end
