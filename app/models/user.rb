@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :avatar, 
+  									styles: { medium: "300x300>", thumb: "100x100>" }, 
+  									default_url: ActionController::Base.helpers.asset_path('placeholder.png')
 
   # creating a new user
 	validates :password, length: { minimum: 3 }, :on => :create
