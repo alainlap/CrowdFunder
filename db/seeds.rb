@@ -8,7 +8,8 @@
 
 User.create(
   username: "DaddyDiva",
-  email: "daddy@diva.com")
+  email: "daddy@diva.com",
+  password: "daddy")
 
 Project.create(name: "Amazing Project Title",
           goal: 3400,
