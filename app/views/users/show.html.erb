@@ -16,7 +16,7 @@
 	<%= form_for(@user) do |f| %>
 
 	<fieldset>
-		<legend>Basic info | <a href="#" class="activate-form">Edit</a></legend>
+		<legend>Basic info</legend>
 		<div class="small-4 columns" id="#avatar">
 			<%= image_tag @user.avatar.url(:medium) %>
 		</div>
@@ -31,7 +31,10 @@
 				<%= f.label :email %>
 				<%= f.text_field :email %>
 
-				<ul class="right"><%= f.submit "Update", class: "button tiny" %></ul>
+				<ul class="right">
+					<%= f.submit "Update", class: "button tiny" %>
+					<a href="#" class="activate-form button tiny">Edit</a>
+				</ul>
 
 			</fieldset>
 		<% end %>
@@ -45,7 +48,7 @@
 	<div class="small-6 columns">
 		<%= form_for(@user) do |f| %>
 			<fieldset>
-				<legend>Login info | <a href="#" class="activate-form">Edit</a></legend>
+				<legend>Login info</legend>
 					<%= f.label :username %>
 					<%= f.text_field :username %>
 
@@ -55,7 +58,10 @@
 					<%= f.label :password_confirmation %>
 					<%= f.password_field :password_confirmation %>
 
-					<ul class="right"><%= f.submit "Update", class: "button tiny" %></ul>
+					<ul class="right">
+						<%= f.submit "Update", class: "button tiny" %>
+						<a href="#" class="activate-form button tiny">Edit</a>
+					</ul>
 
 			</fieldset>
 			<% end %>
@@ -64,7 +70,7 @@
 	<div class="small-6 columns">
 		<%= form_for(@user) do |f| %>
 			<fieldset>
-				<legend>Address | <a href="#" class="activate-form">Edit</a></legend>
+				<legend>Address</legend>
 
 				<%= f.label :street_address %>
 				<%= f.text_field :street_address %>
@@ -81,14 +87,13 @@
 				<%= f.label :phone_number %>
 				<%= f.text_field :phone_number %>
 
-				<ul class="right"><%= f.submit "Update", class: "button tiny" %></ul>
+				<ul class="right">
+					<%= f.submit "Update", class: "button tiny" %>
+					<a href="#" class="activate-form button tiny">Edit</a>
+				</ul>
 
 			</fieldset>
 		<% end %>
 	</div>
 
 </div>
-
-
-
-

@@ -13,22 +13,20 @@ function toggleForm(e) {
 	e.preventDefault();
 	e.stopPropagation();
 
-	if (self.hasClass("active")) {
-		console.log("Deactivating");
-		self.html("Edit").removeClass("active");
-		self.closest("form").find("input").prop("disabled", true);
+	if (self.hasClass("alert")) {
+		self.html("Edit").removeClass("alert");
+		self.closest("form").find("input").prop("disabled", true).addClass("no-field-display");
 		self.closest("form").find("input[type='submit']").css("display","none");
 	} else {
-		console.log("Activating");
-		self.html("Cancel").addClass("active");
-		self.closest("form").find("input").prop("disabled", false);
-		self.closest("form").find("input[type='submit']").css("display","block");
+		self.html("Cancel").addClass("alert");
+		self.closest("form").find("input").prop("disabled", false).removeClass("no-field-display");
+		self.closest("form").find("input[type='submit']").css("display","inline-block");
 	};
 };
 
 
 function disableForms() {
-	$("input").prop("disabled", true);
+	$("input").prop("disabled", true).addClass("no-field-display");
 	$("input[type='submit']").css("display", "none");
 	return false;
 }
