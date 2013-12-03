@@ -26,6 +26,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        auto_login(@user)
         format.html { redirect_to(projects_path, notice: 'Please check your email for an account activation link.') }
         format.json { render action: 'show', status: :created, location: @user }
       else
