@@ -43,3 +43,4 @@ class ProjectsController < ApplicationController
     params.require(:project).permit(:name,:goal,:description,:img,:end_date,:min_pledge,:website,:creator_id,tiers_attributes: [:id, :threshold, :reward_text, :initial_quantity])
   end
 end
+

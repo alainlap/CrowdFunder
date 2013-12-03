@@ -1,0 +1,46 @@
+<h1><%= @project.name %></h1>
+<h2><%= @project.creator %></h2>
+
+
+<div class="large-9 columns">
+
+  <div class="leftcoltop leftcol">
+    <div class="headerimg" style="background-image:url(<%= @project.img %>)"></div>
+    <div class="goals">
+      <h3 class="center round progress100">XX% of $<%= @project.goal.to_s %></h3>
+      <div class="progress round">
+        <span class="meter" style="width: 40%"></span>
+      </div>
+      <h3 class="subheader center"><small>$XXX from Y backers</small></h3>
+      <a href="#" class="button large alert contbutton">Contribute</a>
+    </div>
+  </div>
+
+  <div class="leftcolmid leftcol">
+    <h3>Description</h3>
+    <p class="text-justify"><%= @project.description %></p>
+  </div>
+
+  <div class="leftcolbottom leftcol">
+    <h3>Project Founder</h3>
+    <p><%= @project.creator %></p>
+  </div>
+
+</div>
+
+
+<div class="small-3 columns" id="rightcol">
+  <ul>
+    <% @project.tiers.each do |tier| %>
+    <li class="tiercard">
+      <div class="tiernumber">
+        <%= image_tag "star.png", class: "starimg" %>
+        <h4 class="inline">$<%= tier.threshold.to_s %></h4>
+      </div>
+      <p class="tiertext"><%= tier.reward_text %></p>
+    </lu>
+    <% end %>
+  </ul>
+</div>
+
+
