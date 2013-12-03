@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "activation@crowdfunderadmin.com"
 
   def activation_needed_email(user)
     @user = user
@@ -11,7 +11,7 @@ class UserMailer < ActionMailer::Base
 
   def activation_success_email(user)    
     @user = user
-    @url = "http://0.0.0.0:3000/login"
+    @url = "http://0.0.0.0:3000/projects"
 
     mail(to: @user.email,
           subject: "Your account is now activated")
