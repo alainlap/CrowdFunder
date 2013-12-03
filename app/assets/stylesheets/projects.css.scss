@@ -38,7 +38,7 @@ h1 {
   display: inline;
   width: 20px;
   height: 20px;
-  margin-bottom: 9px; }
+  margin-bottom: 13px; }
 
 .leftcol {
   margin-bottom: 15px;
@@ -54,17 +54,24 @@ h1 {
 
 .tiercard {
   padding: 10px;
-  background-color: #c7e1f0;
+  color: #fff;
+  background-color: #3c7df0;
   margin-bottom: 15px;
   list-style-type: none; }
 
 .tiernumber {
   font-size: 20px;
+  color: #fff;
   color: #2a27f0;
   display: inline-block; }
 
+.threshold {
+  color: #fff;
+  font-size: 28px; }
+
 .tiertext {
-  line-height: 1em; }
+  line-height: 1em;
+  font-weight: 200; }
 
 
 
