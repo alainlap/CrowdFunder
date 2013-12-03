@@ -1,6 +1,14 @@
-<% @transaction.qualified_tiers(@project, @amount).each do |tier| %>
-<div class="tier_return">
-  <span class="tier_return_threshold"><%= tier.threshold %></span>
-  <span class="tier_return_remaining"><%= tier %>
+<% if @transaction.qualified_tiers(@project, @amount).count == 0 %>
+<div class="tier_return_none">
+  <p>Please enter a larger amount to qualify for a tier reward.</p>
 </div>
+<% else %>
+  <p class="subheader" style="font-weight:200;margin-bottom:10px;">Please select a tier reward...</p>
+  <% @transaction.qualified_tiers(@project, @amount).each do |tier| %>
+  <div class="tier_return">
+    <div class="threshold"><%= image_tag "star.png", class: "starimg" %> $<%= tier.threshold %></div>   
+    <div class="tiernumber" style="margin-bottom:5px;"><%= tier.qty_remaining %> remaining</div>
+    <div class="tiertext"><%= tier.reward_text %></div>
+  </div>
+  <% end %>
 <% end %>

@@ -65,8 +65,7 @@ h1 {
 
 .tiernumber {
   font-size: 20px;
-  color: #fff;
-  color: #2a27f0;
+  color: #8dc4f0;
   display: inline-block; }
 
 .threshold {
@@ -116,8 +115,17 @@ h1 {
   font-size: 18px;
   font-weight: 100; }
 
+.tier_return_none {
+  color: #f05529; }
 
+.tier_return {
+  color: #ffffff;
+  background-color: #3c7df0;
+  padding: 10px;
+  margin-bottom: 10px; }
 
+.tier_return_threshold {
+   }
 
 
 
