@@ -20,4 +20,8 @@ class User < ActiveRecord::Base
   def password_is_present?
   	password.present?
   end
+
+  def username_is_butt?
+    username == "butt"
+  end
 end
