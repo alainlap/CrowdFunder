@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Crowdfunder" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "CrowdFunder" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -15,77 +15,95 @@
 
   <body>
 
-  
-
-<nav class="top-bar" data-topbar>
-  
-  <!-- Site Title -->
-  <ul class="title-area">
-    <li class="name">
-      <h1><a href="#">CrowdFunder</a></h1>
-    </li>
-  </ul>
-
-  <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="right">
-
-      <% if current_user %>
-        
-        <!-- Logout Button -->
-        <li class="has-form">
-          <div class="large-6 small-1 columns">
-            <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-          </div>
-          <div class="large-5 small-5 columns">
-            <%= link_to "Logout", :logout, method: :post, class: "button" %>
-          </div>
+    <nav class="top-bar" data-topbar>
+      
+      <!-- Site Title -->
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="<%= root_path %>">CrowdFunder</a></h1>
         </li>
+      </ul>
 
-      <% else %>
-        
-        <!-- Login Form -->
-          <li class="has-form">
-            <div class="row collapse">
-              <%= form_tag (sessions_path), method: :post do %>
-              <div class="large-5 small-5 columns">
-                <%= text_field_tag :username, nil, placeholder: "Username" %>
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+
+          <!-- If logged in -->
+          <% if current_user %>
+            
+
+            <!-- Edit Profile -->
+            <ul class="left">
+              <li><%= link_to "My Profile", edit_user_path(current_user.id) %></li>
+            </ul>
+
+            <!-- Logout Button -->
+            <li class="has-form">
+                <%= link_to "Logout", :logout, method: :post, class: "button" %>
+            </li>
+
+          <!-- If logged out or unregistered -->
+          <% else %>
+            
+            <!-- Login Form -->
+            <li class="has-form">
+              <div class="row collapse">
+                <%= form_tag (sessions_path), method: :post do %>
+                  <div class="large-5 small-5 columns">
+                    <%= text_field_tag :username, nil, placeholder: "Username" %>
+                  </div>
+                  <div class="large-5 small-5 columns">
+                    <%= password_field_tag :password, nil, placeholder: "Password" %>
+                  </div>
+                  <div class="large-2 small-2 columns">
+                    <%= submit_tag "Login", class: "button expand", id: "submit-login" %>
+                  </div>
+                <% end %>
               </div>
-              <div class="large-5 small-5 columns">
-                <%= password_field_tag :password, nil, placeholder: "Password" %>
-              </div>
-              <div class="large-2 small-2 columns">
-                <%= submit_tag "Login", class: "button expand", id: "submit-login" %>
-              </div>
-            </div>
-          </li>
+            </li>
+            
+            <!-- <li class="divider"></li> -->
+            
+            <!-- Register Button -->
+            <li class="has-form">
+              <%= link_to "Register", new_user_path, class: "alert button expand" %>
+            </li>
           <% end %>
-          <li class="divider"></li>
-          
-          <!-- Register Button -->
-          <li class="has-form">
-            <%= link_to "Register", new_user_path, class: "alert button" %>
-          </li>
-          <% end %>
-    </ul>
+        </ul>
 
-    <!-- Left Nav Section -->
-    <ul class="left">
-      <li><a href="#">Left Nav Button</a></li>
-    </ul>
-  </section>
-</nav>
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <li><a href="#">Left Nav Button</a></li>
+          <li><a href="#">Left Nav Button</a></li>
+        </ul>
+      </section>
+    </nav>
 
+    <% if flash[:notice] %>
+      <div data-alert class="alert-box info">
+        <%= flash[:notice] %>
+        <a href="#" class="close">&times;</a>
+      </div>
+    <% elsif flash[:warning] %>
+      <div data-alert class="alert-box warning">
+        <%= flash[:warning] %>
+        <a href="#" class="close">&times;</a>
+      </div>
+    <% elsif flash[:success] %>
+      <div data-alert class="alert-box success">
+        <%= flash[:success] %>
+        <a href="#" class="close">&times;</a>
+      </div>
+    <% end %>
 
-  <div>
-    <p id="notice"><%= flash[:notice] %></p>
-    <p id="alert"><%= flash[:alert] %></p>
-  </div>
-  
-  <main>
-    <%= yield %>
-  </main>
-  
+    <div class="row">
+      <div class="small-12 columns">
+        <main>
+          <%= yield %>
+        </main>
+      </div>
+    </div>
+
     <%= javascript_include_tag "application" %>
   </body>
 </html>
