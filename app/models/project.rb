@@ -18,6 +18,6 @@ class Project < ActiveRecord::Base
   end
 
   def number_of_backers
-    self.transactions.size
+    self.transactions.select{|transaction| transaction.dollar_amount > 0}.size
   end
 end
