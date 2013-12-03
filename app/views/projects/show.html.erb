@@ -1,6 +1,4 @@
-<h1><%= @project.name %></h1>
-<h2><%= @project.creator %></h2>
-
+<h1><%= @project.name %> <small class="subheader">by <%= @project.creator.username %></h1>
 
 <div class="large-9 columns">
 
@@ -29,18 +27,33 @@
 </div>
 
 
-<div class="small-3 columns" id="rightcol">
+<div class="large-3 columns" id="rightcol">
   <ul>
     <% @project.tiers.each do |tier| %>
     <li class="tiercard">
       <div class="tiernumber">
         <%= image_tag "star.png", class: "starimg" %>
-        <h4 class="inline threshold">$<%= tier.threshold.to_s %></h4>
+        <h4 class="inline threshold nopad">$<%= tier.threshold.to_s %></h4>
       </div>
+      <h5 class="remaining">X remaining</h5>
       <p class="tiertext"><%= tier.reward_text %></p>
     </lu>
     <% end %>
   </ul>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
