@@ -1,4 +1,5 @@
 class TransactionsController < ApplicationController
+  before_filter :require_login
   def create
     project = Project.find(params[:project_id])
     transaction = project.transactions.build(transaction_params)
