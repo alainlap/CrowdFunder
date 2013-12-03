@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
   has_many :sponsors, through: :transactions, class_name: "User", source: :user
   has_many :tiers
   accepts_nested_attributes_for :tiers
+  has_many :transactions
 
   def sum_raised
     total = 0
@@ -14,5 +15,9 @@ class Project < ActiveRecord::Base
 
   def percentage_raised
     sum_raised / self.goal
+  end
+
+  def number_of_backers
+    self.transactions.size
   end
 end
