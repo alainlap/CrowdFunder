@@ -13,15 +13,20 @@
 <% end %>
 
 <div class="row">
-	<%= form_for(@user) do |f| %>
+	<div class="small-4 columns" id="avatar">
+		<%= form_for(@user) do |f| %>
+			<%= image_tag @user.avatar.url(:medium), class: "th" %>
+			<%= f.file_field :avatar %>
+			<%= f.submit "Upload", class: "button tiny" %>
+		<% end %>
+	</div>
 
-	<fieldset>
-		<legend>Basic info</legend>
-		<div class="small-4 columns" id="#avatar">
-			<%= image_tag @user.avatar.url(:medium) %>
-		</div>
+	<div class="small-8 columns">				
+		<%= form_for(@user) do |f| %>
 
-		<div class="small-8 columns">				
+			<fieldset>
+				<legend>Basic info</legend>
+
 				<%= f.label :first_name %>
 				<%= f.text_field :first_name %>
 
