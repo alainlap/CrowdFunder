@@ -12,6 +12,8 @@ CrowdFunder::Application.routes.draw do
     resources :transactions
   end
 
+  get 'updatetiers' =>'transactions#update_tiers'
+
   
 
   # The priority is based upon order of creation: first created -> highest priority.
