@@ -17,7 +17,8 @@ Project.create(name: "Amazing Project Title",
           img: "http://images.nationalgeographic.com/wpf/media-live/photos/000/252/cache/autumn-landscape-colorful-leaves_25289_990x742.jpg",
           end_date: Date.new(2014,01,01),
           min_pledge: 100,
-          website: "www.google.com" )
+          website: "www.google.com",
+          summary: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." )
 
 Project.create(name: "Sweet Project Two",
           goal: 73400,
@@ -26,7 +27,8 @@ Project.create(name: "Sweet Project Two",
           img: "http://tennis-pronostics.com/sites/default/files/photo_gallery/dodig_8.jpg",
           end_date: Date.new(2015,01,01),
           min_pledge: 100,
-          website: "www.google.com" )
+          website: "www.google.com",
+          summary: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." )
 
 Tier.create(
   project_id: 1,
