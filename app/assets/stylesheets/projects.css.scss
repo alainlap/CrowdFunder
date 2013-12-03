@@ -11,6 +11,10 @@ h1 {
 .center {
   text-align: center; }
 
+.nopad {
+  margin: 0;
+  padding: 0; }
+
 .headerimg {
   width: 400px;
   height: 250px;
@@ -69,9 +73,89 @@ h1 {
   color: #fff;
   font-size: 28px; }
 
+.remaining {
+  color: #8dc4f0; }
+
 .tiertext {
   line-height: 1em;
+  letter-spacing: 1px;
   font-weight: 200; }
+
+/* index */
+
+.orbit {
+  /*max-height: 400px;*/
+   }
+
+.orbitcaption {
+  position: absolute;
+  bottom: 0;}
+
+.indexcard {
+  margin: 15px;
+  width: 450px;
+  height: 400px;
+  display: inline-block;
+  background-size: cover;
+  position: relative; }
+
+.indexcardtitle {
+  background-color: rgba(255,255,255,0.6);
+  padding-left: 15px;
+  margin-top: 0; }
+
+.indexcardsummary {
+  background-color: rgba(0,0,0,0.6);
+  color: #ffffff;
+  font-weight: 400;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 0;
+  padding-left: 10px;
+  padding-bottom: 6px;
+  font-size: 18px;
+  font-weight: 100; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

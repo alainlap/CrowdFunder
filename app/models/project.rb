@@ -8,7 +8,7 @@ class Project < ActiveRecord::Base
   def sum_raised
     total = 0
     self.transactions.each do |pledge|
-      total += pledge.dollaramount
+      total += pledge.dollar_amount if pledge.dollar_amount
     end
     total
   end
@@ -18,6 +18,7 @@ class Project < ActiveRecord::Base
   end
 
   def number_of_backers
-    self.transactions.size
+    self.transactions.select{|transaction| !transaction.dollar_amount.nil? }.size
   end
 end
+
