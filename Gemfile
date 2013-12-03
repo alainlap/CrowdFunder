@@ -62,3 +62,5 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem "sorcery", "~> 0.8.4"
+
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
