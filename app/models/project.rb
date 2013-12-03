@@ -21,3 +21,4 @@ class Project < ActiveRecord::Base
     self.transactions.select{|transaction| transaction.dollar_amount > 0}.size
   end
 end
+
