@@ -13,6 +13,6 @@ class Project < ActiveRecord::Base
   end
 
   def percentage_raised
-    sum_raised / goal
+    sum_raised / self.goal
   end
 end
