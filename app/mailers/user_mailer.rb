@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "activation@crowdfunderadmin.com"
 
   def activation_needed_email(user)
     @user = user
@@ -9,14 +9,9 @@ class UserMailer < ActionMailer::Base
           subject: "Welcome to CrowdFunder!")
   end
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.activation_success_email.subject
-  #
   def activation_success_email(user)    
     @user = user
-    @url = "http://0.0.0.0:3000/login"
+    @url = "http://0.0.0.0:3000/projects"
 
     mail(to: @user.email,
           subject: "Your account is now activated")

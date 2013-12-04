@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :require_login, only: [:new, :create]
+  skip_before_filter :require_login, only: [:new, :create, :activate]
 
   def activate
     if (@user = User.load_from_activation_token(params[:id]))
       @user.activate!
-      redirect_to(login_path, :notice => 'User was successfully activated.')
+      redirect_to(projects_path, :notice => 'Your account was successfully activated.')
     else
       not_authenticated
     end
@@ -26,11 +26,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to(projects_path, notice: 'Please check your email for an account activation link.') }
-        format.json { render action: 'show', status: :created, location: @user }
+        format.html { redirect_to(projects_path, notice: 'Please check your email for an account activation link') }
       else
         format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -49,7 +47,6 @@ class UsersController < ApplicationController
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url }
-      format.json { head :no_content }
     end
   end
 

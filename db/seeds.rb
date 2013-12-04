@@ -11,6 +11,13 @@ User.create(
   email: "daddy@diva.com",
   password: "daddy")
 
+User.create(
+  username: "test",
+  email: "test@test.com",
+  password: "test")
+
+User.all.each { |u| u.activate! }
+
 Project.create(name: "Amazing Project Title",
           goal: 3400,
           creator_id: 1,
