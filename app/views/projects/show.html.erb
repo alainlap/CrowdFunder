@@ -14,7 +14,7 @@
   <div class="leftcoltop leftcol panel">
     <div class="headerimg" style="background-image:url(<%= @project.img %>)"></div>
     <div class="goals">
-      <h3 class="center round progress100"><%= @project.percentage_raised %>% of $<%= @project.goal.to_s %></h3>
+      <h3 class="center round progress100"><%= @project.percentage_raised %>% of <%= number_to_currency @project.goal.to_s, precision: 0 %></h3>
         <% if @project.percentage_raised < 100 %>
           <div class="progress round">
           <span class="meter" style="width: <%= @project.percentage_raised %>%"></span>
@@ -23,44 +23,54 @@
           <span class="meter win" style="width: 100%"></span>
         <% end %>
       </div>
-      <h3 class="subheader center"><small>$<%= @project.sum_raised %> from <%= @project.number_of_backers %> backers</small></h3>
+      <p class="subheader center backtrans"><small><%= number_to_currency @project.sum_raised, precision: 0 %> from <%= pluralize @project.number_of_backers, 'backer' %><br>and <%= pluralize @project.number_of_transactions, 'transaction' %></small></p>
       <a href="#" data-reveal-id="addfundsmodal" class="button large alert contbutton">Contribute</a>
     </div>
   </div>
 
   <div class="leftcolmid leftcol panel">
+    <h3>Summary</h3>
+    <p class="text-justify"><%= @project.summary %></p>
     <h3>Description</h3>
     <p class="text-justify"><%= @project.description %></p>
   </div>
 
   <div class="leftcolbottom leftcol panel">
-    <h3>Project Founder</h3>
-    <p><%= @project.creator %></p>
+    <h3>About The Creator</h3>
+    <p>
+      <h5><%= @project.creator.username %> <small><%= mail_to @project.creator.email %></small></h5>
+      <ul style="list-style-type:none;">
+        <li><b>Projects: </b><%= @project.creator.created_projects.size %></li>
+      </ul>
+    </p>
   </div>
 
 </div>
 
 
 <div class="large-3 columns" id="rightcol">
-  <ul>
-    <% @project.tiers.each do |tier| %>
-    <% if tier.qty_remaining < 1 %>
-      <li class="tiercard_out">
-      <div class="tiernumber">
-        <%= image_tag "star.png", class: "starimg" %>
-        <h4 class="inline threshold nopad">$<%= tier.threshold.to_s %></h4>
-      </div>
-      <h5 class="remaining_none">Sold Out!</h5>    
-    <% else %>
-      <li class="tiercard">
-      <div class="tiernumber">
-        <%= image_tag "star.png", class: "starimg" %>
-        <h4 class="inline threshold nopad">$<%= tier.threshold.to_s %></h4>
-      </div>
-      <h5 class="remaining"><%= tier.qty_remaining %> remaining</h5>
-    <% end %>
-      <p class="tiertext"><%= tier.reward_text %></p>
-    </lu>
+    <% @project.tiers.sort.each do |tier| %>
+      <% if tier.qty_remaining < 1 %>
+        <ul>
+        <li class="tiercard_out">
+        <div class="tiernumber">
+          <%= image_tag "star.png", class: "starimg" %>
+          <h4 class="inline threshold nopad">$<%= tier.threshold.to_s %></h4>
+        </div>
+        <h5 class="remaining_none">Sold Out!</h5>
+          <p class="tiertext_out"><%= tier.reward_text %></p>
+        </ul>    
+      <% else %>
+        <ul>
+        <li class="tiercard">
+        <div class="tiernumber">
+          <%= image_tag "star.png", class: "starimg" %>
+          <h4 class="inline threshold nopad"><%= number_to_currency tier.threshold.to_s, precision: 0 %></h4>
+        </div>
+        <h5 class="remaining"><%= tier.qty_remaining %> remaining</h5>
+        <p class="tiertext"><%= tier.reward_text %></p>
+        </ul>
+      <% end %>
     <% end %>
   </ul>
 </div>

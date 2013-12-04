@@ -36,16 +36,19 @@
 
           <!-- If logged in -->
           <% if current_user %>
-            
+
 
             <!-- Edit Profile -->
             <ul class="left">
               <li>
               <a href="<%= user_path(current_user.id) %>">
-              <%= image_tag current_user.avatar.url(:mini) %> &nbsp; My Profile
+              <%= image_tag current_user.avatar.url(:mini) %> &nbsp; <%= current_user.username %>
               </a>
               </li>
             </ul>
+
+            <!-- new proj -->
+            <a href="<%= new_project_path %>" class="button success tiny left">New Project</a>
 
             <!-- Logout Button -->
             <li class="has-form">
