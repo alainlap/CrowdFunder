@@ -31,8 +31,8 @@
 				<div class="small-12 columns">
 					<%= form_for(@user) do |f| %>
 						
-						<%= f.label "Upload New Avatar" %>
-						<%= f.file_field :avatar %>
+						<%= f.label "Upload New Avatar", class: "hide-until-edit" %>
+						<%= f.file_field :avatar, class: "hide-until-edit" %>
 						
 						<%= f.label :username %>
 						<%= f.text_field :username %>
@@ -41,7 +41,7 @@
 						<%= f.email_field :email %>
 
 						<ul class="right">
-							<%= f.submit "Update", class: "button tiny" %>
+							<%= f.submit "Update", class: "button tiny hide-until-edit" %>
 							<a href="#" class="activate-form button tiny">Edit</a>
 						</ul>
 
@@ -79,7 +79,7 @@
 				<%= f.text_field :phone_number %>
 
 				<ul class="right">
-					<%= f.submit "Update", class: "button tiny" %>
+					<%= f.submit "Update", class: "button tiny hide-until-edit" %>
 					<a href="#" class="activate-form button tiny">Edit</a>
 				</ul>
 
