@@ -14,8 +14,21 @@ class ProjectsController < ApplicationController
 
   def new
     @creator = current_user
-    @project = Project.new
-    10.times {@project.tiers.build}
+    @project = Project.new({
+      creator_id: @creator.id,
+      name: "Type your project name here",
+      goal: 0,
+      description: "Type your project description here.",
+      img: ActionController::Base.helpers.asset_path('defaultprojectimage.png')
+    })
+    3.times do |i|
+      @project.tiers.build({
+        threshold: 0,
+        reward_text: "Enter a reward here!",
+        initial_quantity: 0
+      })
+    end
+    render "show"
   end
 
   def create

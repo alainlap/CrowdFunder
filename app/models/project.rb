@@ -14,7 +14,11 @@ class Project < ActiveRecord::Base
   end
 
   def percentage_raised
-    sum_raised / self.goal
+    if self.goal != 0
+      sum_raised / self.goal 
+    else
+      0
+    end
   end
 
   def number_of_backers
