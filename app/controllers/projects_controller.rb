@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
         initial_quantity: 0
       })
     end
-    render "show"
+    render "edit"
   end
 
   def create
@@ -39,9 +39,6 @@ class ProjectsController < ApplicationController
     else
       render "new"
     end
-  end
-
-  def edit
   end
 
   def update
