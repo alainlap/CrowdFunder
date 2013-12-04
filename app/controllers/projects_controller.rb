@@ -21,13 +21,13 @@ class ProjectsController < ApplicationController
       description: "Type your project description here.",
       img: ActionController::Base.helpers.asset_path('defaultprojectimage.png')
     })
-    3.times do |i|
-      @project.tiers.build({
-        threshold: 0,
-        reward_text: "Enter a reward here!",
-        initial_quantity: 0
-      })
-    end
+    # 3.times do |i|
+    #   @project.tiers.build({
+    #     threshold: 0,
+    #     reward_text: "Enter a reward here!",
+    #     initial_quantity: 0
+    #   })
+    # end
     render "edit"
   end
 

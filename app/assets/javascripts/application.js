@@ -19,11 +19,11 @@ $(function(){ $(document).foundation(); });
 
 $(document).ready(function() {
 
-  $('.dollar_amount').keyup(function(){
-
-    setTimeout( function() {
+  setTimeout( function() {
       $('.alert-box').fadeOut('2000'); 
-    }, 5000);
+    }, 3000);
+
+  $('.dollar_amount').keyup(function(){
 
     var amount = $('.dollar_amount').val();
     var project = window.location.pathname.replace('/projects/', "");
