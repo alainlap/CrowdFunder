@@ -6,70 +6,48 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(
-  username: "DaddyDiva",
-  email: "daddy@diva.com",
-  password: "daddy")
-
-User.create(
-  username: "test",
-  email: "test@test.com",
-  password: "test")
+6.times do
+  User.create(
+  username: Faker::Internet.user_name,
+  email: Faker::Internet.safe_email,
+  password: 'password',
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  street_address: Faker::Address.building_number + " " + Faker::Address.street_name,
+  city: Faker::Address.city,
+  province: Faker::Address.state,
+  postal_code: Faker::Address.zip_code,
+  phone_number: Faker::PhoneNumber.cell_phone
+  )
+end
 
 User.all.each { |u| u.activate! }
 
-Project.create(name: "Amazing Project Title",
-          goal: 3400,
-          creator_id: 1,
-          description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.",
-          img: "http://images.nationalgeographic.com/wpf/media-live/photos/000/252/cache/autumn-landscape-colorful-leaves_25289_990x742.jpg",
-          end_date: Date.new(2014,01,01),
-          min_pledge: 100,
-          website: "www.google.com",
-          summary: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." )
+width = [800, 801, 805, 810, 820, 823, 845, 834, 824, 815]
 
-Project.create(name: "Sweet Project Two",
-          goal: 73400,
-          creator_id: 1,
-          description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.",
-          img: "http://tennis-pronostics.com/sites/default/files/photo_gallery/dodig_8.jpg",
-          end_date: Date.new(2015,01,01),
-          min_pledge: 100,
-          website: "www.google.com",
-          summary: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." )
+15.times do
+  img_width = width.sample.to_s
+  Project.create(
+  name: Faker::Commerce.product_name,
+  goal: Faker::Number.number(5),
+  description: Faker::Lorem.paragraphs(6).join('\n'),
+  img: "http://placekitten.com/#{img_width}/500",
+  end_date: Date.new(2015,1,1),
+  min_pledge: 1,
+  website: Faker::Internet.url,
+  summary: Faker::Company.bs,
+  creator_id: User.all.sample.id
+  )
+end
 
-Tier.create(
-  project_id: 1,
-  initial_quantity: 5,
-  threshold: 100,
-  reward_text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.")
+quant = [1, 2, 3, 4, 5, 6]
+threshold = [100, 200, 500, 1000, 2000, 5000, 10000]
 
-Tier.create(
-  project_id: 1,
-  initial_quantity: 7,
-  threshold: 400,
-  reward_text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.")
-
-Tier.create(
-  project_id: 1,
-  initial_quantity: 8,
-  threshold: 800,
-  reward_text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.")
-
-Tier.create(
-  project_id: 1,
-  initial_quantity: 12,
-  threshold: 1200,
-  reward_text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.")
-
-Tier.create(
-  project_id: 1,
-  initial_quantity: 4,
-  threshold: 1800,
-  reward_text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.")
-
-Transaction.create(
-  project_id: 1,
-  user_id: 2,
-  dollar_amount: 1200,
-  tier_id: 4)
+50.times do 
+  Tier.create(
+  project_id: Project.all.sample.id,
+  initial_quantity: quant.sample,
+  threshold: threshold.sample,
+  reward_text: Faker::Company.bs + " and " + Faker::Company.bs + " and " + Faker::Company.bs
+  )
+end
