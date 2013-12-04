@@ -6,12 +6,8 @@
     <div class="leftcoltop leftcol">
       <div class="headerimg" style="background-image:url(<%= @project.img %>)"></div>
       <div class="goals">
-        <h3 class="center round progress100"><%= @project.percentage_raised %>% of $<%= p.text_area :goal %></h3>
-        <div class="progress round">
-          <span class="meter" style="width: <%= @project.percentage_raised %>%"></span>
-        </div>
-        <h3 class="subheader center"><small>$<%= @project.sum_raised %> from <%= @project.number_of_backers %> backers</small></h3>
-        <a href="#" data-reveal-id="addfundsmodal" class="button large alert contbutton">Contribute</a>
+        <h3 class="center round progress100">Funding Goal:<%= p.text_area :goal %></h3> 
+        <a href="#" class="button large alert contbutton">Create</a>
       </div>
     </div>
 
@@ -24,22 +20,13 @@
       <h3>Project Founder</h3>
       <p><%= @project.creator %></p>
     </div>
-
   </div>
 
 
   <div class="large-3 columns" id="rightcol">
-    <ul>
-      <%= p.fields_for :tiers do |t| %>
-        <li class="tiercard">
-          <div class="tiernumber">
-            <%= image_tag "star.png", class: "starimg" %>
-            <h4 class="inline threshold nopad">$<%= t.text_area :threshold %></h4>
-          </div>
-          <h5 class="remaining"><%= t.text_area :initial_quantity%> remaining</h5>
-          <p class="tiertext"><%= t.text_area :reward_text %></p>
-        </li>
-      <% end %>
+    <ul id="tierlist">
+      <%= render "dynamictiers", p: p %>
     </ul>
+    <button id="tieradd">Add a new reward tier</button>
   </div>
 <% end %>
