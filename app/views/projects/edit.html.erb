@@ -7,7 +7,7 @@
       <div class="headerimg" style="background-image:url(<%= @project.img %>)"></div>
       <div class="goals">
         <h3 class="center round progress100">Funding Goal:<%= p.text_area :goal %></h3> 
-        <a href="#" class="button large alert contbutton">Create</a>
+        <%= p.submit "Save Changes", class: "button large alert contbutton" %>
       </div>
     </div>
 
