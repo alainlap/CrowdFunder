@@ -29,7 +29,7 @@ width = [800, 801, 805, 810, 820, 823, 845, 834, 824, 815]
   img_width = width.sample.to_s
   Project.create(
   name: Faker::Commerce.product_name,
-  goal: Faker::Number.number(5),
+goal: Faker::Number.number(3),
   description: Faker::Lorem.paragraphs(6).join('\n'),
   img: "http://placekitten.com/#{img_width}/500",
   end_date: Date.new(2015,1,1),
