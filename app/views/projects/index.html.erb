@@ -6,10 +6,12 @@
                                             timer_speed: 2000;
                                             animation_speed: 1000;
                                             next_on_click: true;
-                                            variable_height: true;">
+                                            variable_height: false; ">
     <% @projects.each do |project| %>
-      <li>
-        <%= image_tag project.img %>
+      <li class="test">
+        <a href="<%= project_path(project) %>">
+          <div class="orbitslide" style="background-image:url(<%= project.img %>)"></div>
+        </a>
         <div class="orbit-caption">
           <%= project.name %>
         </div>

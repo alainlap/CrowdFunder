@@ -49,30 +49,42 @@
 
 
 <div class="large-3 columns" id="rightcol">
-    <% @project.tiers.sort { |e, b| e.threshold <=> b.threshold }.each do |tier| %>
-      <% if tier.qty_remaining < 1 %>
-        <ul>
-        <li class="tiercard_out">
-        <div class="tiernumber">
-          <%= image_tag "star.png", class: "starimg" %>
-          <h4 class="inline threshold nopad">$<%= tier.threshold.to_s %></h4>
-        </div>
-        <h5 class="remaining_none">Sold Out!</h5>
-          <p class="tiertext_out"><%= tier.reward_text %></p>
-        </ul>    
-      <% else %>
-        <ul>
-        <li class="tiercard">
-        <div class="tiernumber">
-          <%= image_tag "star.png", class: "starimg" %>
-          <h4 class="inline threshold nopad"><%= number_to_currency tier.threshold.to_s, precision: 0 %></h4>
-        </div>
-        <h5 class="remaining"><%= tier.qty_remaining %> remaining</h5>
-        <p class="tiertext"><%= tier.reward_text %></p>
-        </ul>
+    <% if @project.tiers.count == 0 %>
+
+    <ul>
+      <li class="tiercard">
+        <h5 style="color:#ffffff">No tiers set for this project</h5>
+      </li>
+    </ul>
+
+    <% else %>
+
+      <% @project.tiers.sort { |e, b| e.threshold <=> b.threshold }.each do |tier| %>
+        <% if tier.qty_remaining < 1 %>
+          <ul>
+            <li class="tiercard_out">
+            <div class="tiernumber">
+              <%= image_tag "star.png", class: "starimg" %>
+              <h4 class="inline threshold nopad">$<%= tier.threshold.to_s %></h4>
+            </div>
+            <h5 class="remaining_none">Sold Out!</h5>
+              <p class="tiertext_out"><%= tier.reward_text %></p>
+            </ul>    
+          <% else %>
+            <ul>
+            <li class="tiercard">
+            <div class="tiernumber">
+              <%= image_tag "star.png", class: "starimg" %>
+              <h4 class="inline threshold nopad"><%= number_to_currency tier.threshold.to_s, precision: 0 %></h4>
+            </div>
+            <h5 class="remaining"><%= tier.qty_remaining %> remaining</h5>
+            <p class="tiertext"><%= tier.reward_text %></p>
+          </ul>
+        <% end %>
       <% end %>
+      </ul>
+
     <% end %>
-  </ul>
 </div>
 
 

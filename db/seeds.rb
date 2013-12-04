@@ -23,15 +23,15 @@ end
 
 User.all.each { |u| u.activate! }
 
-width = [800, 801, 805, 810, 820, 823, 845, 834, 824, 815]
+width = [970, 971, 972, 973, 974, 975, 976, 977, 978, 979]
 
 15.times do
   img_width = width.sample.to_s
   Project.create(
   name: Faker::Commerce.product_name,
-goal: Faker::Number.number(3),
+  goal: Faker::Number.number(3),
   description: Faker::Lorem.paragraphs(6).join('\n'),
-  img: "http://placekitten.com/#{img_width}/500",
+  img: "http://placekitten.com/#{img_width}/600",
   end_date: Date.new(2015,1,1),
   min_pledge: 1,
   website: Faker::Internet.url,
