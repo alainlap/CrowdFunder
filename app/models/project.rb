@@ -22,6 +22,12 @@ class Project < ActiveRecord::Base
   end
 
   def number_of_backers
+    a = self.transactions.select{|transaction| !transaction.dollar_amount.nil?}
+    a.uniq! { |p| p.user_id }
+    a.count
+  end
+
+  def number_of_transactions
     self.transactions.select{|transaction| !transaction.dollar_amount.nil?}.size
   end
 

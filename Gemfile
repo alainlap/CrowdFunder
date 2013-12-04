@@ -37,6 +37,7 @@ group :development do
 	gem "pry", "~> 0.9.12.4"
 	gem 'binding_of_caller'
 	gem 'better_errors'
+  gem 'debugger'
 end
 
 group :development, :test do
