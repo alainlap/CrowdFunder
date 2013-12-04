@@ -22,6 +22,7 @@ $(document).ready(function() {
 
   $(".dollar_amount").numeric();
 
+  // automatically kill alerts after 5 seconds
   setTimeout( function() {
       $('.alert-box').fadeOut('2000'); 
     }, 3000);
@@ -44,12 +45,15 @@ $(document).ready(function() {
 
 
   $('body').on('click', '.tier_return', function (){
-          $('.tier_return').removeAttr('style').removeClass('selected');
-          $('.tiernumber').css('color','#8dc4f0');
-          $(this).css('background-color','#04a600').addClass('selected');
-          $(this).find('.tiernumber').css('color','#06ff00');
-      });
-// automatically kill alerts after 5 seconds
+      //reset tiers
+      $('.tier_return').removeAttr('style').removeClass('selected');
+      $('.tiernumber').css('color','#8dc4f0');
+      //select clicked tier
+      $(this).removeAttr('style').removeClass('selected');
+      $(this).css('background-color','#04a600').addClass('selected');
+      $(this).find('.tiernumber').css('color','#06ff00');
+  });
+
 
 });
 
