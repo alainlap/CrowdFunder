@@ -4,11 +4,40 @@
 </div>
 <% else %>
   <p class="subheader" style="font-weight:200;margin-bottom:10px;">Please select a tier reward...</p>
+
   <% @transaction.qualified_tiers(@project, @amount).each do |tier| %>
-  <div class="tier_return">
-    <div class="threshold"><%= image_tag "star.png", class: "starimg" %> $<%= tier.threshold %></div>   
+  <div class="tier_return" href="#" id="<%= tier.id %>">
+    <div class="tier_return_threshold"><%= image_tag "star.png", class: "starimgpop" %> $<%= tier.threshold %></div>   
     <div class="tiernumber" style="margin-bottom:5px;"><%= tier.qty_remaining %> remaining</div>
-    <div class="tiertext"><%= tier.reward_text %></div>
+    <div class="tierreward"><%= tier.reward_text %></div>
   </div>
   <% end %>
+
 <% end %>
+
+<a href="#" class="button medium alert contbutton" id="submit_funds">Submit Funds</a>
+
+<script>
+
+$('#submit_funds').on('click', function(event) {
+  event.preventDefault();
+  $(this).addClass('disabled');
+  $(this).html('Submitting...')
+  var amount = $('.dollar_amount').val();
+  var project = window.location.pathname.replace('/projects/', "");
+  var tier = $('.selected').attr('id');
+  $.ajax({
+    type: "POST",
+    url: "/createtransaction",
+    dataType: 'script',
+    data: {amount: amount,
+          project: project,
+          tier: tier},
+    success: ""
+  });
+  setTimeout(function () {
+    location.reload();
+  }, 1000);
+});
+
+</script>

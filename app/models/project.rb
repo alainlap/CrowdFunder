@@ -14,11 +14,12 @@ class Project < ActiveRecord::Base
   end
 
   def percentage_raised
-    sum_raised / self.goal
+    ( (self.sum_raised.to_f / self.goal) * 100 ).to_i
   end
 
   def number_of_backers
     self.transactions.select{|transaction| !transaction.dollar_amount.nil?}.size
   end
+
 end
 

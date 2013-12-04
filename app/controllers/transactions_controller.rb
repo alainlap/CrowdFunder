@@ -2,18 +2,13 @@ class TransactionsController < ApplicationController
   before_filter :require_login
 
   def create
-    project = Project.find(params[:project_id])
-    transaction = project.transactions.build(transaction_params)
-    transaction.user_id = current_user.user_id
-    transaction.tier_id = params([:tier_id])
-    if transaction.save
-      redirect_to project_path(project.id)
-    else
-      redirect_to project_path(project.id)
-    end
-  end
-
-  def show
+    @transaction = Transaction.new
+    @project = Project.find(params[:project])
+    @transaction.project_id = params[:project]
+    @transaction.dollar_amount = params[:amount].to_i
+    @transaction.user_id = current_user.id
+    @transaction.tier_id = params[:tier]
+    @transaction.save
   end
 
   def update_tiers
@@ -24,4 +19,10 @@ class TransactionsController < ApplicationController
       format.js {}
     end
   end
+
+  private
+  def transaction_params
+    params.require(:transaction).permit(:amount, :project, :tier, :dollar_amount)
+  end
+
 end

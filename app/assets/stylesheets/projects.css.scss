@@ -44,10 +44,15 @@ h1 {
   height: 20px;
   margin-bottom: 13px; }
 
+.starimgpop {
+  display: inline;
+  width: 20px;
+  height: 20px;
+  margin-bottom: 7px; }
+
 .leftcol {
   margin-bottom: 15px;
   padding: 15px;
-  background-color: #f0eee1;
   margin-right: -30px; }
 
 .leftcoltop {
@@ -61,7 +66,8 @@ h1 {
   color: #fff;
   background-color: #3c7df0;
   margin-bottom: 15px;
-  list-style-type: none; }
+  list-style-type: none;
+  border: 1px solid #0034c6; }
 
 .tiernumber {
   font-size: 20px;
@@ -122,10 +128,8 @@ h1 {
   color: #ffffff;
   background-color: #3c7df0;
   padding: 10px;
-  margin-bottom: 10px; }
-
-.tier_return_threshold {
-   }
+  margin-bottom: 10px;
+  cursor: pointer; }
 
 
 

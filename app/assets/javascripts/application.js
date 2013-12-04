@@ -31,5 +31,13 @@ $(document).ready(function() {
     });
   });
 
+
+  $('body').on('click', '.tier_return', function (){
+          $('.tier_return').removeAttr('style').removeClass('selected');
+          $('.tiernumber').css('color','#8dc4f0');
+          $(this).css('background-color','#04a600').addClass('selected');;
+          $(this).find('.tiernumber').css('color','#06ff00');
+      });
+
 });
 
