@@ -13,6 +13,7 @@
 
   <body>
 
+  <div class="contain-to-grid">
     <nav class="top-bar" data-topbar>
       
       <!-- Site Title -->
@@ -39,7 +40,11 @@
 
             <!-- Edit Profile -->
             <ul class="left">
-              <li><%= link_to "My Profile", user_path(current_user.id) %></li>
+              <li>
+              <a href="<%= user_path(current_user.id) %>">
+              <%= image_tag current_user.avatar.url(:mini) %> &nbsp; My Profile
+              </a>
+              </li>
             </ul>
 
             <!-- Logout Button -->
@@ -76,8 +81,20 @@
           <% end %>
         </ul>
 
+        <ul class="left">
+
+        <li class="has-dropdown">
+          <%= link_to "Projects", projects_path %>
+          <ul class="dropdown">
+            <li><%= link_to "View all Projects", projects_path %></li>
+            <li><%= link_to "Create a Project", new_project_path %></li>
+          </ul>
+        </li>
+        </ul>
+
       </section>
     </nav>
+  </div>
 
     <% if flash[:notice] %>
       <div data-alert class="alert-box info">

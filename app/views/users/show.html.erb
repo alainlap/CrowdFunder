@@ -1,4 +1,4 @@
-<h1>My profile</h1>
+<h1>User Profile <small>: <%= @user.username %></small></h1>
 
 <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -12,70 +12,56 @@
     </div>
 <% end %>
 
-<div class="row">
-	<div class="small-4 columns" id="avatar">
-		<%= form_for(@user) do |f| %>
-			<%= image_tag @user.avatar.url(:medium), class: "th" %>
-			<%= f.file_field :avatar %>
-			<%= f.submit "Upload", class: "button tiny" %>
-		<% end %>
+<!-- Top Row -->
+<div class="row"> 
+	
+	<!-- Avatar Column -->
+	<div class="small-6 columns">
+		<fieldset>
+			<legend>Basic Information</legend>
+			
+			<div class="row">
+				<div class="small-8 small-centered columns">
+					<%= image_tag @user.avatar.url(:medium), class: "th" %>
+				</div>
+			</div>
+
+		
+			<div class="row">
+				<div class="small-12 columns">
+					<%= form_for(@user) do |f| %>
+						
+						<%= f.label "Upload New Avatar" %>
+						<%= f.file_field :avatar %>
+						
+						<%= f.label :username %>
+						<%= f.text_field :username %>
+
+						<%= f.label :email %>
+						<%= f.email_field :email %>
+
+						<ul class="right">
+							<%= f.submit "Update", class: "button tiny" %>
+							<a href="#" class="activate-form button tiny">Edit</a>
+						</ul>
+
+					<% end %>
+				</div>
+			</div>
+		</fieldset>
 	</div>
 
-	<div class="small-8 columns">				
-		<%= form_for(@user) do |f| %>
 
+	<div class="small-6 columns">
+		<%= form_for(@user) do |f| %>
 			<fieldset>
-				<legend>Basic info</legend>
+				<legend>My Details</legend>
 
 				<%= f.label :first_name %>
 				<%= f.text_field :first_name %>
 
 				<%= f.label :last_name %>
 				<%= f.text_field :last_name %>
-
-				<%= f.label :email %>
-				<%= f.text_field :email %>
-
-				<ul class="right">
-					<%= f.submit "Update", class: "button tiny" %>
-					<a href="#" class="activate-form button tiny">Edit</a>
-				</ul>
-
-			</fieldset>
-		<% end %>
-	</div>
-
-	
-</div>
-
-<div class="row">
-
-	<div class="small-6 columns">
-		<%= form_for(@user) do |f| %>
-			<fieldset>
-				<legend>Login info</legend>
-					<%= f.label :username %>
-					<%= f.text_field :username %>
-
-					<%= f.label :password %>
-					<%= f.password_field :password %>
-
-					<%= f.label :password_confirmation %>
-					<%= f.password_field :password_confirmation %>
-
-					<ul class="right">
-						<%= f.submit "Update", class: "button tiny" %>
-						<a href="#" class="activate-form button tiny">Edit</a>
-					</ul>
-
-			</fieldset>
-			<% end %>
-	</div>
-
-	<div class="small-6 columns">
-		<%= form_for(@user) do |f| %>
-			<fieldset>
-				<legend>Address</legend>
 
 				<%= f.label :street_address %>
 				<%= f.text_field :street_address %>
@@ -100,5 +86,15 @@
 			</fieldset>
 		<% end %>
 	</div>
-
 </div>
+
+<h2>Your Recent Transactions</h2>
+<div class="row">
+	<% @user.transactions.each do |t| %>
+		<div class="large-4 columns">
+			<h3><%= t.project.name %></h3>
+			<p><strong>Date:</strong> <%= t.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
+			<p><strong>Amount:</strong> $ <%= t.dollar_amount %>.00</p>
+		</div>
+	<% end %>
+	</div>
