@@ -32,6 +32,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'carrierwave'
+
 group :development do
 	gem 'foundation-rails'
 	gem "pry", "~> 0.9.12.4"
