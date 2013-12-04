@@ -69,6 +69,14 @@ h1 {
   list-style-type: none;
   border: 1px solid #0034c6; }
 
+.tiercard_out {
+  padding: 10px;
+  color: #fff;
+  background-color: #C45256;
+  margin-bottom: 15px;
+  list-style-type: none;
+  border: 1px solid #86000A; }
+
 .tiernumber {
   font-size: 20px;
   color: #8dc4f0;
@@ -80,6 +88,9 @@ h1 {
 
 .remaining {
   color: #8dc4f0; }
+
+.remaining_none {
+    color: #86000A; }
 
 .tiertext {
   line-height: 1em;

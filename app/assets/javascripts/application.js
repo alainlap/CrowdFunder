@@ -22,7 +22,7 @@ $(document).ready(function() {
   $('.dollar_amount').keyup(function(){
 
     setTimeout( function() {
-      $('.alert-box').fadeOut('2000');  
+      $('.alert-box').fadeOut('2000'); 
     }, 5000);
 
     var amount = $('.dollar_amount').val();
