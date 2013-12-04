@@ -36,7 +36,7 @@
 
           <!-- If logged in -->
           <% if current_user %>
-            
+
 
             <!-- Edit Profile -->
             <ul class="left">
@@ -46,6 +46,9 @@
               </a>
               </li>
             </ul>
+
+            <!-- new proj -->
+            <a href="<%= new_project_path %>" class="button success tiny left">New Project</a>
 
             <!-- Logout Button -->
             <li class="has-form">
