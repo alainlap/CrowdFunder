@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.numeric
 //= require foundation
 //= require_tree .
 
@@ -19,21 +20,26 @@ $(function(){ $(document).foundation(); });
 
 $(document).ready(function() {
 
+  $(".dollar_amount").numeric();
+
   setTimeout( function() {
       $('.alert-box').fadeOut('2000'); 
     }, 3000);
 
   $('.dollar_amount').keyup(function(){
-
     var amount = $('.dollar_amount').val();
     var project = window.location.pathname.replace('/projects/', "");
-    $.ajax({
-      url: "/updatetiers",
-      dataType: "script",
-      data: {amount: amount,
-            project: project},
-      success: ""
-    });
+    if (amount != 0) {
+      $.ajax({
+        url: "/updatetiers",
+        dataType: "script",
+        data: {amount: amount,
+              project: project},
+        success: ""
+      });
+    } else {
+      $('.tierselect').html('');
+    }
   });
 
 

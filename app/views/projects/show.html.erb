@@ -3,7 +3,7 @@
 <div id="addfundsmodal" class="reveal-modal" data-reveal>
   <h2><small>Contribute to</small> <span style="color:#3c7df0"><%= @project.name %></span></h2>
   <%= form_for [@project, @transaction] do |t| %>
-    <%= t.text_field :dollar_amount, class: "dollar_amount", placeholder: "Please enter an amount..." %>
+    <%= t.number_field :dollar_amount, class: "dollar_amount", placeholder: "Please enter an amount..." %>
   <% end %>
   <div class="tierselect"></div>
   <a class="close-reveal-modal">&#215;</a>
