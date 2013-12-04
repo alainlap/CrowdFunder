@@ -42,7 +42,7 @@
             <ul class="left">
               <li>
               <a href="<%= user_path(current_user.id) %>">
-              <%= image_tag current_user.avatar.url(:mini) %> &nbsp; My Profile
+              <%= image_tag current_user.avatar.url(:mini) %> &nbsp; <%= current_user.username %>
               </a>
               </li>
             </ul>
