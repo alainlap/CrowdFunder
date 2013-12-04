@@ -1,8 +1,8 @@
 $(document).ready(function(){
   $('#tieradd').on('click',function(event){
     event.preventDefault();
-    var tierid = 0;
-    $('#tierlist').append("<li class='tiercard' id = " + tierid + "><div class='tiernumber'><img alt='Star' class='starimg' src='/assets/star.png'/><h4 class='inline threshold nopad'>$<textarea id='project_tiers_attributes_" + tierid + "_threshold' name='project[tiers_attributes][" + tierid + "][threshold]'>0</textarea></h4></div><h5 class='remaining'><textarea id='project_tiers_attributes_" + tierid + "_initial_quantity' name='project[tiers_attributes][" + tierid + "][initial_quantity]'>0</textarea> remaining</h5><p class='tiertext'><textarea id='project_tiers_attributes_" + tierid + "_reward_text' name='project[tiers_attributes][" + tierid + "][reward_text]'>Enter a reward here!</textarea></p><button class='tierdelete'>Remove this tier</button></li>");
+    var tierid = $('.tiercard').size();
+    $('#tierlist').append("<li class='tiercard'><div class='tiernumber'><img alt='Star' class='starimg' src='/assets/star.png'/><h4 class='inline threshold nopad'>$<textarea id='project_tiers_attributes_" + tierid + "_threshold' name='project[tiers_attributes][" + tierid + "][threshold]'>0</textarea></h4></div><h5 class='remaining'><textarea id='project_tiers_attributes_" + tierid + "_initial_quantity' name='project[tiers_attributes][" + tierid + "][initial_quantity]'>0</textarea> remaining</h5><p class='tiertext'><textarea id='project_tiers_attributes_" + tierid + "_reward_text' name='project[tiers_attributes][" + tierid + "][reward_text]'>Enter a reward here!</textarea></p><button class='tierdelete'>Remove this tier</button></li>");
   });
 });
 
