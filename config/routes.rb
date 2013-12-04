@@ -6,11 +6,17 @@ CrowdFunder::Application.routes.draw do
   get 'login' => 'sessions#new', :as => :login
   post 'logout' => 'sessions#destroy', :as => :logout
   
-  resources :users, except: [:index]
+  resources :users, except: [:index] do
+    member do
+      get :activate
+    end
+  end
   resources :projects do
     resources :tiers, except: [:index, :show]
     resources :transactions
   end
+
+  get 'updatetiers' =>'transactions#update_tiers'
 
   
 

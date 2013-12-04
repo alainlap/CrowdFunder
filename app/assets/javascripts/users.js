@@ -15,18 +15,18 @@ function toggleForm(e) {
 
 	if (self.hasClass("alert")) {
 		self.html("Edit").removeClass("alert");
-		self.closest("form").find("input").prop("disabled", true).addClass("no-field-display");
+		self.closest("form").find("input").not("#avatar input").prop("disabled", true).addClass("no-field-display");
 		self.closest("form").find("input[type='submit']").css("display","none");
 	} else {
 		self.html("Cancel").addClass("alert");
-		self.closest("form").find("input").prop("disabled", false).removeClass("no-field-display");
+		self.closest("form").find("input").not("#avatar input").prop("disabled", false).removeClass("no-field-display");
 		self.closest("form").find("input[type='submit']").css("display","inline-block");
 	};
 };
 
 
 function disableForms() {
-	$("input").prop("disabled", true).addClass("no-field-display");
-	$("input[type='submit']").css("display", "none");
+	$("input").not("#avatar input").prop("disabled", true).addClass("no-field-display");
+	$("input[type='submit']").not("#avatar input").css("display", "none");
 	return false;
 }

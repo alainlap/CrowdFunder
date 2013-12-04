@@ -1,6 +1,11 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :avatar, 
+  									styles: { medium: "300x300#",
+                              thumb: "100x100#",
+                              mini: "28x28#" },
+  									default_url: ActionController::Base.helpers.asset_path('assets/placeholder_:style.png')
+                    # Not sure why the asset_path isn't working without setting the 'assets/' - it works in console
 
   # creating a new user
 	validates :password, length: { minimum: 3 }, :on => :create
