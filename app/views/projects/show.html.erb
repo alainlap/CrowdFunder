@@ -14,7 +14,7 @@
   <div class="leftcoltop leftcol panel">
     <div class="headerimg" style="background-image:url(<%= @project.img %>)"></div>
     <div class="goals">
-      <h3 class="center round progress100"><%= @project.percentage_raised %>% of $<%= @project.goal.to_s %></h3>
+      <h3 class="center round progress100"><%= @project.percentage_raised %>% of <%= number_to_currency @project.goal.to_s, precision: 0 %></h3>
         <% if @project.percentage_raised < 100 %>
           <div class="progress round">
           <span class="meter" style="width: <%= @project.percentage_raised %>%"></span>
@@ -23,12 +23,14 @@
           <span class="meter win" style="width: 100%"></span>
         <% end %>
       </div>
-      <h3 class="subheader center"><small>$<%= @project.sum_raised %> from <%= pluralize @project.number_of_backers, 'backer' %></small></h3>
+      <h3 class="subheader center"><small><%= number_to_currency @project.sum_raised, precision: 0 %> from <%= pluralize @project.number_of_backers, 'backer' %></small></h3>
       <a href="#" data-reveal-id="addfundsmodal" class="button large alert contbutton">Contribute</a>
     </div>
   </div>
 
   <div class="leftcolmid leftcol panel">
+    <h3>Summary</h3>
+    <p class="text-justify"><%= @project.summary %></p>
     <h3>Description</h3>
     <p class="text-justify"><%= @project.description %></p>
   </div>
@@ -47,7 +49,7 @@
 
 
 <div class="large-3 columns" id="rightcol">
-    <% @project.tiers.each do |tier| %>
+    <% @project.tiers.sort.each do |tier| %>
       <% if tier.qty_remaining < 1 %>
         <ul>
         <li class="tiercard_out">
@@ -63,7 +65,7 @@
         <li class="tiercard">
         <div class="tiernumber">
           <%= image_tag "star.png", class: "starimg" %>
-          <h4 class="inline threshold nopad">$<%= tier.threshold.to_s %></h4>
+          <h4 class="inline threshold nopad"><%= number_to_currency tier.threshold.to_s, precision: 0 %></h4>
         </div>
         <h5 class="remaining"><%= tier.qty_remaining %> remaining</h5>
         <p class="tiertext"><%= tier.reward_text %></p>
