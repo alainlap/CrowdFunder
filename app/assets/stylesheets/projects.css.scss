@@ -90,12 +90,19 @@ h1 {
   color: #8dc4f0; }
 
 .remaining_none {
-    color: #86000A; }
+  color: #86000A; }
 
 .tiertext {
   line-height: 1em;
   letter-spacing: 1px;
-  font-weight: 200; }
+  font-weight: 200;
+  color: #ffffff; }
+
+.tiertext_out {
+  line-height: 1em;
+  letter-spacing: 1px;
+  font-weight: 200;
+  color: #E09191 }
 
 /* index */
 

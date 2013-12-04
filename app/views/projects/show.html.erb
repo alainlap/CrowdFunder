@@ -23,7 +23,7 @@
           <span class="meter win" style="width: 100%"></span>
         <% end %>
       </div>
-      <h3 class="subheader center"><small>$<%= @project.sum_raised %> from <%= @project.number_of_backers %> backers</small></h3>
+      <h3 class="subheader center"><small>$<%= @project.sum_raised %> from <%= pluralize @project.number_of_backers, 'backer' %></small></h3>
       <a href="#" data-reveal-id="addfundsmodal" class="button large alert contbutton">Contribute</a>
     </div>
   </div>
@@ -34,33 +34,41 @@
   </div>
 
   <div class="leftcolbottom leftcol panel">
-    <h3>Project Founder</h3>
-    <p><%= @project.creator %></p>
+    <h3>About The Creator</h3>
+    <p>
+      <h5><%= @project.creator.username %> <small><%= mail_to @project.creator.email %></small></h5>
+      <ul style="list-style-type:none;">
+        <li><b>Projects: </b><%= @project.creator.created_projects.size %></li>
+      </ul>
+    </p>
   </div>
 
 </div>
 
 
 <div class="large-3 columns" id="rightcol">
-  <ul>
     <% @project.tiers.each do |tier| %>
-    <% if tier.qty_remaining < 1 %>
-      <li class="tiercard_out">
-      <div class="tiernumber">
-        <%= image_tag "star.png", class: "starimg" %>
-        <h4 class="inline threshold nopad">$<%= tier.threshold.to_s %></h4>
-      </div>
-      <h5 class="remaining_none">Sold Out!</h5>    
-    <% else %>
-      <li class="tiercard">
-      <div class="tiernumber">
-        <%= image_tag "star.png", class: "starimg" %>
-        <h4 class="inline threshold nopad">$<%= tier.threshold.to_s %></h4>
-      </div>
-      <h5 class="remaining"><%= tier.qty_remaining %> remaining</h5>
-    <% end %>
-      <p class="tiertext"><%= tier.reward_text %></p>
-    </lu>
+      <% if tier.qty_remaining < 1 %>
+        <ul>
+        <li class="tiercard_out">
+        <div class="tiernumber">
+          <%= image_tag "star.png", class: "starimg" %>
+          <h4 class="inline threshold nopad">$<%= tier.threshold.to_s %></h4>
+        </div>
+        <h5 class="remaining_none">Sold Out!</h5>
+          <p class="tiertext_out"><%= tier.reward_text %></p>
+        </ul>    
+      <% else %>
+        <ul>
+        <li class="tiercard">
+        <div class="tiernumber">
+          <%= image_tag "star.png", class: "starimg" %>
+          <h4 class="inline threshold nopad">$<%= tier.threshold.to_s %></h4>
+        </div>
+        <h5 class="remaining"><%= tier.qty_remaining %> remaining</h5>
+        <p class="tiertext"><%= tier.reward_text %></p>
+        </ul>
+      <% end %>
     <% end %>
   </ul>
 </div>
