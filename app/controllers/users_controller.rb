@@ -26,6 +26,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+
+        # TEMPORARY FOR TESTING
+        auto_login(@user)
+        # *********************
+
         format.html { redirect_to(projects_path, notice: 'Please check your email for an account activation link') }
       else
         format.html { render action: 'new' }

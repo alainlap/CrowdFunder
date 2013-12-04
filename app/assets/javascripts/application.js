@@ -31,5 +31,11 @@ $(document).ready(function() {
     });
   });
 
+
+// automatically kill alerts after 5 seconds
+setTimeout( function() {
+  $('.alert-box').fadeOut('2000');  
+}, 5000);
+
 });
 
