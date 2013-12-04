@@ -86,13 +86,15 @@
 			</fieldset>
 		<% end %>
 	</div>
-
-	
 </div>
 
+<h2>Your Recent Transactions</h2>
 <div class="row">
-
-
-	
-
-</div>
+	<% @user.transactions.each do |t| %>
+		<div class="large-4 columns">
+			<h3><%= t.project.name %></h3>
+			<p><strong>Date:</strong> <%= t.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
+			<p><strong>Amount:</strong> $ <%= t.dollar_amount %>.00</p>
+		</div>
+	<% end %>
+	</div>
