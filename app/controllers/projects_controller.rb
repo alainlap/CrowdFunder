@@ -7,9 +7,9 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    if current_user
+    #if current_user
       @transaction = @project.transactions.build
-    end
+    #end
   end
 
   def new
