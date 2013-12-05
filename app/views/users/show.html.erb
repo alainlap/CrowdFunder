@@ -17,7 +17,7 @@
 	
 	<!-- Avatar Column -->
 	<div class="small-6 columns">
-		<fieldset>
+		<fieldset id="basic-info">
 			<legend>Basic Information</legend>
 			
 			<div class="row">
@@ -51,7 +51,7 @@
 		</fieldset>
 	</div>
 
-
+	<!-- Details Column -->
 	<div class="small-6 columns">
 		<%= form_for(@user) do |f| %>
 			<fieldset>
@@ -88,13 +88,13 @@
 	</div>
 </div>
 
-<h2>Your Recent Transactions</h2>
+<!-- Bottom Row -->
+<h2>Projects I've supported</h2>
 <div class="row">
-	<% @user.transactions.each do |t| %>
-		<div class="large-4 columns">
-			<h3><%= t.project.name %></h3>
-			<p><strong>Date:</strong> <%= t.created_at.strftime("%d-%m-%Y %H:%M:%S") %></p>
-			<p><strong>Amount:</strong> $ <%= t.dollar_amount %>.00</p>
-		</div>
-	<% end %>
-	</div>
+	<fieldset>
+		<legend>Projects still seeking funding</legend>
+		<!-- Move query to controller? and make it work -->
+		<% @user.sponsored_projects.where("end_date >= ?", DateTime.now).each do |project| %>
+			<%= render 'sponsored_project' %>
+		<% end %>
+</div>
