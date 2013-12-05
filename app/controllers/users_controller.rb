@@ -12,6 +12,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @active_projects_transactions = @user.transactions.select {|transaction| transaction.project.active}
+    @completed_projects_transactions = @user.transactions.select {|transaction| !transaction.project.active}
   end
 
   def new

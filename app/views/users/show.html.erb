@@ -89,24 +89,24 @@
 </div>
 
 <!-- Bottom Row -->
-<h2>Projects I've supported</h2>
-<div class="row">
-	<fieldset>
-		<legend>Projects still seeking funding</legend>
-		<% @user.transactions.each do |transaction| %>
-			<% if transaction.project.active %>
+<h2>My transactions</h2>
+<div class="row small-12 columns">
+	<% if @active_projects_transactions %>
+		<fieldset>
+			<legend>Projects still seeking funding</legend>
+			<% @active_projects_transactions.each do |transaction| %>
 				<%= render 'sponsored_project', transaction: transaction %>
 			<% end %>
-		<% end %>
-	</fieldset>
-
-	<fieldset>
-		<legend>Projects with met goals</legend>
-		<% @user.transactions.each do |transaction| %>
-			<% if !transaction.project.active %>
+		</fieldset>
+	<% end %>
+</div>
+<div class="row small-12 columns">
+	<% if @completed_projects_transactions %>
+		<fieldset>
+			<legend>Projects with met goals</legend>
+			<% @completed_projects_transactions.each do |transaction| %>
 				<%= render 'sponsored_project', transaction: transaction %>
 			<% end %>
-		<% end %>
-	</fieldset>
-
+		</fieldset>
+	<% end %>
 </div>
