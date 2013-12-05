@@ -4,7 +4,7 @@ class Project < ActiveRecord::Base
   has_many :tiers
   accepts_nested_attributes_for :tiers
   has_many :transactions
-  has_attached_file :projectpicture, :styles => { :medium => "400x250>", :thumb => "100x100>" }, :default_url => ActionController::Base.helpers.asset_path('assets/defaultprojectimage.png')
+  has_attached_file :projectpicture, styles: { medium: "400x250>", thumb: "100x100>" }, default_url: ActionController::Base.helpers.asset_path('assets/defaultprojectimage.png')
 
   def sum_raised
     total = 0

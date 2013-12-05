@@ -1,10 +1,9 @@
 <%= p.fields_for :tiers do |t| %>
   <li class="tiercard">
     <div class="tiernumber">
-      <%= image_tag "star.png", class: "starimg" %>
-      <h4 class="inline threshold nopad">$<%= t.text_area :threshold %></h4>
+      <h4 class="inline threshold nopad">$ Threshold:<%= t.text_area :threshold %></h4>
     </div>
-    <h5 class="remaining"><%= t.text_area :initial_quantity%> remaining</h5>
+    <h5 class="remaining">Quantity:<%= t.text_area :initial_quantity%></h5>
     <p class="tiertext"><%= t.text_area :reward_text %></p>
     <button class="tierdelete">Remove this tier</button>
   </li>
