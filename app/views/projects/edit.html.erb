@@ -1,13 +1,16 @@
 <%= form_for @project, html: {multipart: true} do |p| %>
-  <h1><%= p.text_area :name %> <small class="subheader">by <%= @creator.username %></h1>
+  <h1><%= p.text_area :name, placeholder: "Type your project name here!" %> <small class="subheader">by <%= @creator.username %></h1>
+
 
   <div class="large-9 columns">
 
     <div class="leftcoltop leftcol">
-      <div class="headerimg"><%= image_tag @project.projectpicture.url %></div>
+       <%= p.text_area :summary, placeholder: "Type a short summary here"%>
+      <div class="headerimg" style="background-image:url(<%= @project.projectpicture.url %>)"></div>
       
       <div class="goals">
-        <h3 class="center round progress100">Funding Goal:<%= p.text_area :goal %></h3> 
+        <h3 class="center round progress100">Funding Goal:<%= p.text_area :goal %></h3>
+        <h3 class="center round progress100">End Date:<%= p.date_field :end_date %></h3> 
         <%= p.submit "Save Changes", class: "button large alert contbutton" %>
       </div>
       <%= p.file_field :projectpicture %>
@@ -15,7 +18,7 @@
 
     <div class="leftcolmid leftcol">
       <h3>Description</h3>
-      <p class="text-justify"><%= p.text_area :description %></p>
+      <p class="text-justify"><%= p.text_area :description, placeholder: "Type your project description here! Be specific and reference excellent buzzwords." %></p>
     </div>
 
     <div class="leftcolbottom leftcol panel">
