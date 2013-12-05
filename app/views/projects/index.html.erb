@@ -10,7 +10,7 @@
     <% @projects.each do |project| %>
       <li class="test">
         <a href="<%= project_path(project) %>">
-          <div class="orbitslide" style="background-image:url(<%= project.img %>)"></div>
+          <div class="orbitslide" style="background-image:url(<%= project.projectpicture.url %>)"></div>
         </a>
         <div class="orbit-caption">
           <%= project.name %>
@@ -22,7 +22,7 @@
 
  <% @projects.each do |project| %>
   <a href="<%= project_path(project) %>">
-    <div class="indexcard" style="background-image:url(<%= project.img %>)">
+    <div class="indexcard" style="background-image:url(<%= project.projectpicture.url %>)">
       <h3 class="indexcardtitle"><%= project.name %><h3>
       <h3 class="indexcardsummary"><%= project.summary %></h3>
     </div>
