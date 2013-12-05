@@ -7,12 +7,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    if current_user.id == @project.creator_id
-      @creator = @project.creator
-      render "edit"
-    else
-      @transaction = @project.transactions.build
-    end
+    @transaction = @project.transactions.build
   end
 
   def new
@@ -33,6 +28,13 @@ class ProjectsController < ApplicationController
     else
       render "new"
     end
+  end
+
+  
+     
+  def edit
+    @project = Project.find(params[:id])
+    @creator = @project.creator
   end
 
   def update
