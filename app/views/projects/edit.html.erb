@@ -1,4 +1,4 @@
-<%= form_for @project do |p| %>
+<%= form_for @project, html: {multipart: true} do |p| %>
   <h1><%= p.text_area :name %> <small class="subheader">by <%= @creator.username %></h1>
 
   <div class="large-9 columns">
@@ -10,7 +10,7 @@
         <h3 class="center round progress100">Funding Goal:<%= p.text_area :goal %></h3> 
         <%= p.submit "Save Changes", class: "button large alert contbutton" %>
       </div>
-      <%= p.file_field :avatar %>
+      <%= p.file_field :projectpicture %>
     </div>
 
     <div class="leftcolmid leftcol">
