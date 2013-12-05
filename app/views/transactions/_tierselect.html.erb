@@ -1,6 +1,8 @@
 <% if @transaction.qualified_tiers(@project, @amount).count == 0 %>
 <div class="tier_return_none">
-  <p>Please enter a larger amount to qualify for a tier reward.</p>
+  <% if @project.tiers.count > 0 %>
+    <p>Please enter a larger amount to qualify for a tier reward</p>
+  <% end %>
 </div>
 <% else %>
   <p class="subheader" style="font-weight:200;margin-bottom:10px;">Please select a tier reward...</p>

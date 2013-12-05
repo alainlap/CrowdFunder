@@ -9,6 +9,7 @@ class TransactionsController < ApplicationController
     @transaction.user_id = current_user.id
     @transaction.tier_id = params[:tier]
     @transaction.save
+    render :nothing => true
   end
 
   def update_tiers
