@@ -25,7 +25,7 @@
       </div>
       <p class="subheader center backtrans"><small><%= number_to_currency @project.sum_raised, precision: 0 %> from <%= pluralize @project.number_of_backers, 'backer' %><br>and <%= pluralize @project.number_of_transactions, 'transaction' %></small></p>
       <% if current_user %>
-        <% if current_user.id = @project.creator.id %>
+        <% if current_user.id == @project.creator.id %>
           <a href="/projects/<%=@project.id%>/edit" class="button large alert contbutton">Edit Project</a>
         <% else %>
           <a href="#" data-reveal-id="addfundsmodal" class="button large alert contbutton">Contribute</a>
