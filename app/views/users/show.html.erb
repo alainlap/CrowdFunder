@@ -88,6 +88,29 @@
 	</div>
 </div>
 
+<!-- Middle Row -->
+<% if @user.created_projects.present? %>
+	<div class="row">
+		<h2>My projects</h2><br>
+		<% @user.created_projects.each do |project| %>
+			<div class="small-12 columns">
+
+				<div class="small-4 columns">
+					<%= image_tag(project.projectpicture.url(:medium), class: "th") %>
+				</div>
+
+				<div class="small-8 columns">
+					<h4><%= link_to project.name, project_path(project) %></h4>
+					<h5 class="subheader"><em><%= project.summary %></em></h5>
+		      <p><%= project.percentage_raised %>% of <%= number_to_currency project.goal.to_s, precision: 0 %><br>
+		      <span class="subheader backtrans"><small><%= number_to_currency project.sum_raised, precision: 0 %> from <%= pluralize project.number_of_backers, 'backer' %> and <%= pluralize project.number_of_transactions, 'transaction' %></small></span><br>
+		      <%= project.end_date.past? ? "Campaign over" : days_remaining(project.end_date) + " left in campaign" %></p>
+				</div>
+			</div>
+		<% end %>
+	</div>
+<% end %>
+
 <!-- Bottom Row -->
 <h2>My transactions</h2>
 <div class="row small-12 columns">
