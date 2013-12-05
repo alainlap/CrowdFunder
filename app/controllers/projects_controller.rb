@@ -7,26 +7,21 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    #if current_user
+    if current_user.id == @project.creator_id
+      @creator = @project.creator
+      render "edit"
+    else
       @transaction = @project.transactions.build
-    #end
+    end
   end
 
   def new
     @creator = current_user
     @project = Project.new({
       creator_id: @creator.id,
-      name: "Type your project name here",
-      description: "Type your project description here.",
-      img: ActionController::Base.helpers.asset_path('defaultprojectimage.png')
+      name: "Type your project name here!",
+      description: "Type your project description here! Be specific and reference excellent buzzwords.",
     })
-    # 3.times do |i|
-    #   @project.tiers.build({
-    #     threshold: 0,
-    #     reward_text: "Enter a reward here!",
-    #     initial_quantity: 0
-    #   })
-    # end
     render "edit"
   end
 
@@ -41,6 +36,13 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    @project = Project.find(params[:id])
+
+    if @project.update_attributes(project_params)
+      redirect_to project_path(@project)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -49,7 +51,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name,:goal,:description,:img,:end_date,:min_pledge,:website,:creator_id,tiers_attributes: [:id, :threshold, :reward_text, :initial_quantity])
+    params.require(:project).permit(:name,:goal,:description,:projectpicture,:img,:end_date,:min_pledge,:website,:creator_id,tiers_attributes: [:id, :threshold, :reward_text, :initial_quantity])
   end
 end
 

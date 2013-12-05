@@ -4,11 +4,13 @@
   <div class="large-9 columns">
 
     <div class="leftcoltop leftcol">
-      <div class="headerimg" style="background-image:url(<%= @project.img %>)"></div>
+      <div class="headerimg"><%= image_tag @project.projectpicture.url %></div>
+      
       <div class="goals">
         <h3 class="center round progress100">Funding Goal:<%= p.text_area :goal %></h3> 
         <%= p.submit "Save Changes", class: "button large alert contbutton" %>
       </div>
+      <%= p.file_field :avatar %>
     </div>
 
     <div class="leftcolmid leftcol">
@@ -16,11 +18,18 @@
       <p class="text-justify"><%= p.text_area :description %></p>
     </div>
 
-    <div class="leftcolbottom leftcol">
-      <h3>Project Founder</h3>
-      <p><%= @project.creator %></p>
+    <div class="leftcolbottom leftcol panel">
+      <h3>About The Creator</h3>
+      <p>
+        <h5><%= @project.creator.username %> <small><%= mail_to @project.creator.email %></small></h5>
+        <ul style="list-style-type:none;">
+          <li><b>Projects: </b><%= @project.creator.created_projects.size %></li>
+        </ul>
+      </p>
     </div>
   </div>
+
+
 
 
   <div class="large-3 columns" id="rightcol">

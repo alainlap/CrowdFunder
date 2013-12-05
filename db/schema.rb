@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131203220623) do
+ActiveRecord::Schema.define(version: 20131205182525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,10 @@ ActiveRecord::Schema.define(version: 20131203220623) do
     t.datetime "updated_at"
     t.integer  "creator_id"
     t.string   "summary"
+    t.string   "projectpicture_file_name"
+    t.string   "projectpicture_content_type"
+    t.integer  "projectpicture_file_size"
+    t.datetime "projectpicture_updated_at"
   end
 
   create_table "tiers", force: true do |t|
