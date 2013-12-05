@@ -1,4 +1,12 @@
-<h1>User Profile <small>: <%= @user.username %></small></h1>
+<nav class="small-12 columns">
+	<p class="right-align">Jump to
+		<%= link_to "Profile", "#profile"%> |
+		<%= link_to "Projects", "#created_projects" %> |
+		<%= link_to "Transactions", "#transactions" %>
+	</p>
+</nav>
+
+<h1 id="profile">My Profile <small>: <%= @user.username %></small></h1>
 
 <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -91,7 +99,7 @@
 <!-- Middle Row -->
 <% if @user.created_projects.present? %>
 	<div class="row">
-		<h2>My projects</h2><br>
+		<h2 id="created_projects">My projects</h2><br>
 		<% @user.created_projects.each do |project| %>
 			<div class="small-12 columns">
 
@@ -112,24 +120,31 @@
 <% end %>
 
 <!-- Bottom Row -->
-<h2>My transactions</h2>
-<div class="row small-12 columns">
-	<% if @active_projects_transactions %>
-		<fieldset>
-			<legend>Projects still seeking funding</legend>
-			<% @active_projects_transactions.each do |transaction| %>
-				<%= render 'sponsored_project_transaction', transaction: transaction %>
-			<% end %>
-		</fieldset>
-	<% end %>
-</div>
-<div class="row small-12 columns">
-	<% if @completed_projects_transactions %>
-		<fieldset>
-			<legend>Projects with met goals</legend>
-			<% @completed_projects_transactions.each do |transaction| %>
-				<%= render 'sponsored_project_transaction', transaction: transaction %>
-			<% end %>
-		</fieldset>
-	<% end %>
-</div>
+<h2 id="transactions">My transactions</h2>
+
+<% if @active_projects_transactions.present? %>
+	<div class="row small-12 columns">
+		<% if @active_projects_transactions %>
+			<fieldset>
+				<legend>Projects still seeking funding</legend>
+				<% @active_projects_transactions.each do |transaction| %>
+					<%= render 'sponsored_project_transaction', transaction: transaction %>
+				<% end %>
+			</fieldset>
+		<% end %>
+	</div>
+<% end %>
+<% if @completed_projects_transactions.present? %>
+	<div class="row small-12 columns">
+		<% if @completed_projects_transactions %>
+			<fieldset>
+				<legend>Projects with met goals</legend>
+				<% @completed_projects_transactions.each do |transaction| %>
+					<%= render 'sponsored_project_transaction', transaction: transaction %>
+				<% end %>
+			</fieldset>
+		<% end %>
+	</div>
+<% elsif @user.transactions.blank? %>
+	<p>You haven't supported any projects yet. <%= link_to "Find something awesome today!", projects_path %></p>
+<% end %>
