@@ -14,8 +14,6 @@ class ProjectsController < ApplicationController
     @creator = current_user
     @project = Project.new({
       creator_id: @creator.id,
-      name: "Type your project name here!",
-      description: "Type your project description here! Be specific and reference excellent buzzwords.",
     })
     render "edit"
   end
