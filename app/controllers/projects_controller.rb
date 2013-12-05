@@ -17,7 +17,6 @@ class ProjectsController < ApplicationController
     @project = Project.new({
       creator_id: @creator.id,
       name: "Type your project name here",
-      goal: 0,
       description: "Type your project description here.",
       img: ActionController::Base.helpers.asset_path('defaultprojectimage.png')
     })
