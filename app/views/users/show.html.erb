@@ -95,7 +95,7 @@
 		<fieldset>
 			<legend>Projects still seeking funding</legend>
 			<% @active_projects_transactions.each do |transaction| %>
-				<%= render 'sponsored_project', transaction: transaction %>
+				<%= render 'sponsored_project_transaction', transaction: transaction %>
 			<% end %>
 		</fieldset>
 	<% end %>
@@ -105,7 +105,7 @@
 		<fieldset>
 			<legend>Projects with met goals</legend>
 			<% @completed_projects_transactions.each do |transaction| %>
-				<%= render 'sponsored_project', transaction: transaction %>
+				<%= render 'sponsored_project_transaction', transaction: transaction %>
 			<% end %>
 		</fieldset>
 	<% end %>
