@@ -3,6 +3,24 @@ $(document).ready(function() {
 	if ($(".activate-form").length) {
 		$(".activate-form").on('click', toggleForm);
 		disableForms();
+
+		$("form").on("submit", function(event){
+			var url = $(this).attr("action");
+			var data = $(this).serialize();
+			var self = $(this);
+
+			event.preventDefault();
+
+			$.ajax({
+				type: "PATCH",
+				url: url,
+				data: data,
+				dataType: "json",
+				success: function(result) {
+					$.proxy(toggleForm, self.find('.activate-form'))();
+				}
+			});
+		});
 	}
 
 });
@@ -10,8 +28,10 @@ $(document).ready(function() {
 function toggleForm(e) {
 	var self = $(this);
 	
-	e.preventDefault();
-	e.stopPropagation();
+	if (e) {
+		e.preventDefault();
+		e.stopPropagation();
+	}
 
 	if (self.hasClass("alert")) {
 		self.html("Edit").removeClass("alert");
