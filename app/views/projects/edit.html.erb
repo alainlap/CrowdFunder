@@ -1,9 +1,11 @@
 <%= form_for @project, html: {multipart: true} do |p| %>
   <h1><%= p.text_area :name %> <small class="subheader">by <%= @creator.username %></h1>
 
+
   <div class="large-9 columns">
 
     <div class="leftcoltop leftcol">
+       <%= p.text_area :summary, placeholder: "Type a short summary here"%>
       <div class="headerimg"><%= image_tag @project.projectpicture.url %></div>
       
       <div class="goals">
