@@ -12,7 +12,7 @@
 <div class="large-9 columns">
 
   <div class="leftcoltop leftcol panel">
-    <div class="headerimg" style="background-image:url(<%= @project.img %>)"></div>
+    <div class="headerimg"><%= image_tag @project.projectpicture.url %></div>
     <div class="goals">
       <h3 class="center round progress100"><%= @project.percentage_raised %>% of <%= number_to_currency @project.goal.to_s, precision: 0 %></h3>
         <% if @project.percentage_raised < 100 %>
