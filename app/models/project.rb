@@ -21,6 +21,10 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def active
+    (self.percentage_raised < 100) && (self.end_date >= DateTime.now)
+  end
+
   def number_of_backers
     a = self.transactions.select{|transaction| !transaction.dollar_amount.nil?}
     a.uniq! { |p| p.user_id }
