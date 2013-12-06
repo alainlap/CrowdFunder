@@ -37,10 +37,16 @@
 		
 			<div class="row">
 				<div class="small-12 columns">
+					<div id="avatar">
+						<%= form_for(@user) do |f| %>
+						<%= f.label "Upload New Avatar" %>
+						<%= f.file_field :avatar %>
+						<%= f.submit "Upload", class: "hide-until-edit button tiny", id: "upload-avatar" %>
+
+						<% end %>
+					</div>
+
 					<%= form_for(@user) do |f| %>
-						
-						<%= f.label "Upload New Avatar", class: "hide-until-edit" %>
-						<%= f.file_field :avatar, class: "hide-until-edit" %>
 						
 						<%= f.label :username %>
 						<%= f.text_field :username %>

@@ -9,17 +9,23 @@ $(document).ready(function() {
 			var data = $(this).serialize();
 			var self = $(this);
 
-			event.preventDefault();
+			if (self.parent("#avatar") === []) {
+				event.preventDefault();
 
-			$.ajax({
-				type: "PATCH",
-				url: url,
-				data: data,
-				dataType: "json",
-				success: function(result) {
-					$.proxy(toggleForm, self.find('.activate-form'))();
-				}
-			});
+				$.ajax({
+					type: "PATCH",
+					url: url,
+					data: data,
+					dataType: "json",
+					success: function(result) {
+						$.proxy(toggleForm, self.find('.activate-form'))();
+					}
+				});
+			}
+		});
+
+		$("#user_avatar").on("click", function(){
+			$("#upload-avatar").css("display", "inline-block");
 		});
 	}
 
@@ -41,12 +47,12 @@ function toggleForm(e) {
 		self.html("Cancel").addClass("alert");
 		self.closest("form").find("input").prop("disabled", false).removeClass("no-field-display");
 		self.closest("form").find(".hide-until-edit").css("display","inline-block");
-	};
-};
+	}
+}
 
 
 function disableForms() {
-	$("input").prop("disabled", true);
+	$("input").not("#upload-avatar, #user_avatar, input[name='authenticity_token']").prop("disabled", true);
 	$(".hide-until-edit").css("display", "none");
 	return false;
 }
