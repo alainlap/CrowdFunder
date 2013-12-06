@@ -6,6 +6,7 @@ CrowdFunder::Application.routes.draw do
   get 'login' => 'sessions#new', :as => :login
   post 'logout' => 'sessions#destroy', :as => :logout
   
+  post 'users/:id' => 'users#update'
   resources :users, except: [:index] do
     member do
       get :activate
