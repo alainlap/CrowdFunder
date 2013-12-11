@@ -21,6 +21,11 @@
   )
 end
 
+User.create(
+  username: 'admin',
+  email: 'admin@admin.admin',
+  password: 'admin')
+
 User.all.each { |u| u.activate! }
 
 width = [970, 971, 972, 973, 974, 975, 976, 977, 978, 979]
